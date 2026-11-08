@@ -5,38 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Data &amp; Sources · Keep Sunrise Open</title>
   <meta name="description" content="The numbers behind Keep Sunrise Open, with a source for every figure.">
-  <meta name="theme-color" content="#1d2a47">
+  <meta name="theme-color" content="#24477f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body class="data-page">
-  <nav class="nav" aria-label="Main">
-    <div class="wrap">
-      <a class="brand" href="index.html"><img src="assets/favicon.svg" width="28" height="28" alt=""> Keep Sunrise Open</a>
+<body>
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html"><img src="assets/favicon.svg" width="34" height="34" alt=""><span class="brand-text"><strong>Keep Sunrise Open</strong><small>Alternatives to closure</small></span></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-      <ul id="nav-links">
-        <li><a href="index.html#situation">Where things stand</a></li>
-        <li><a href="index.html#better-path">A better path</a></li>
-        <li><a href="index.html#numbers">Run the numbers</a></li>
-        <li><a href="index.html#stories">Stories</a></li>
+      <ul id="nav-links" class="nav-menu">
+        <li><a href="options.html">Options</a></li>
+        <li><a href="enrollment.html">Enrollment tool</a></li>
+        <li><a href="compare.html">Compare</a></li>
+        <li><a href="data.html" aria-current="page">Data</a></li>
+        <li><a class="btn btn-light btn-sm" data-cfg-href="partnerUrl" href="https://sunrisesoars.org/">Sign the petition ↗</a></li>
       </ul>
     </div>
-  </nav>
+  </header>
 
-  <header class="hero" style="padding:48px 0 32px">
+  <section class="hero hero-sm">
     <div class="wrap">
-      <div class="eyebrow">Data &amp; sources</div>
-      <h1 style="font-size:clamp(2rem,5vw,3rem)">What the data show</h1>
-      <p class="lede">Every figure on this site comes from a district or public document, listed below. Figures marked <span class="calc-tag">calc</span> are our own calculations from those documents, not district figures.</p>
-      <div class="toc">
+      <div class="eyebrow eyebrow-light"><span class="dot"></span>Data &amp; sources</div>
+      <h1>What the data show</h1>
+      <p class="lead">Every figure on this site comes from a district or public document, listed below. Figures marked <span class="calc-tag">calc</span> are our own calculations from those documents, not district figures.</p>
+      <div class="toc toc-light">
         <a href="#schools">Schools</a><a href="#enrollment">Enrollment</a><a href="#scenarios">Scenarios</a>
-        <a href="#fixed">Fixed costs</a><a href="#facility">Facility condition</a><a href="#definitions">Definitions</a><a href="#sources">Sources</a>
+        <a href="#fixed">Fixed costs</a><a href="#facility">Facility condition</a><a href="#district">All elementary schools</a><a href="#grades">Sunrise by grade</a><a href="#pockets">Pockets moved</a><a href="#staffing">Staffing tiers</a><a href="#definitions">Definitions</a><a href="#sources">Sources</a>
       </div>
     </div>
-  </header>
+  </section>
 
   <main>
     <section id="schools"><div class="wrap">
@@ -68,6 +69,30 @@
       <h2>Facility condition: corrective work, 2025–2029</h2>
       <div class="tbl-wrap" id="t-fac"></div>
       <p class="small">Source: S5. Five-year totals are sums of the yearly rows. Per-square-foot figures are from the compiled data set.</p>
+    </div></section>
+
+    <section id="district" class="alt"><div class="wrap">
+      <h2>All elementary schools: capacity and residents</h2>
+      <div class="tbl-wrap" id="t-district"></div>
+      <p class="small">Source: S3. Residents exclude out-of-district students. 61 portable classrooms districtwide (double portables count as 2).</p>
+    </div></section>
+
+    <section id="grades"><div class="wrap">
+      <h2>Sunrise resident students by grade</h2>
+      <div class="tbl-wrap" id="t-grades"></div>
+      <p class="small">Source: S11. 2026 onward are projections in this file. Totals differ by a few students from S3.</p>
+    </div></section>
+
+    <section id="pockets" class="alt"><div class="wrap">
+      <h2>Pockets the district proposes to move</h2>
+      <div class="tbl-wrap" id="t-pockets"></div>
+      <p class="small">Sources: S7, S12.</p>
+    </div></section>
+
+    <section id="staffing"><div class="wrap">
+      <h2>Classified staffing tiers by enrollment</h2>
+      <div class="tbl-wrap" id="t-staff"></div>
+      <p class="small">Source: S12, from the district's Cost of Small School model. Unit costs: $8,320 per added school-assistant hour per day; $14,228 per added nurse hour per day; $51,323 to raise the main office secretary from 4 to 8 hours.</p>
     </div></section>
 
     <section id="definitions" class="alt"><div class="wrap">
@@ -151,6 +176,26 @@
       D.sources.map(s => `<tr><td><strong>${s.code}</strong></td><td>${s.link ? `<a href="${s.link}" target="_blank" rel="noopener">${s.document}</a>` : s.document + ' <span class="small">(PDF shared in the Keep Sunrise Open group)</span>'}</td><td>${s.date}</td><td>${s.provides}</td></tr>`)
     );
     if (D.credit) $("#credit").textContent = D.credit;
+
+    $("#t-district").innerHTML = table(
+      [{t:"School"},{t:"Design capacity",num:1},{t:"Residents 2026",num:1},{t:"2028",num:1},{t:"2030",num:1},{t:"2030 use",num:1}],
+      D.district.map(r => `<tr${hl(r[0])}><td>${r[0]}</td><td class="num">${n(r[1])}</td><td class="num">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td><td class="num">${Math.round(r[4]/r[1]*100)}%</td></tr>`)
+    );
+    const G = D.sunriseGrades;
+    $("#t-grades").innerHTML = table(
+      [{t:"Grade"}, ...G.years.map(y => ({t: y + (y >= G.firstProjected ? "*" : ""), num:1}))],
+      [...Object.entries(G.rows).map(([g, v]) => `<tr><td>${g}</td>${v.map(x => `<td class="num">${x}</td>`).join("")}</tr>`),
+       `<tr class="hl"><td>Total</td>${G.totals.map(x => `<td class="num">${x}</td>`).join("")}</tr>`]
+    ) + '<p class="small">* Projected</p>';
+    $("#t-pockets").innerHTML = table(
+      [{t:"Pocket"},{t:"Currently attends"},{t:"Moves to"},{t:"Students",num:1}],
+      D.pockets.map(p => `<tr><td>${p.code}</td><td>${p.from}</td><td>${p.to}</td><td class="num">${p.students}</td></tr>`)
+    );
+    const S = D.staffing;
+    $("#t-staff").innerHTML = table(
+      [{t:"Enrollment from",num:1},{t:"School assistant hrs/day",num:1},{t:"Nurse hrs/day",num:1},{t:"Main office secretary hrs/day",num:1}],
+      S.tiers.map(t => `<tr><td class="num">${t[0]}</td><td class="num">${t[1]}</td><td class="num">${t[2]}</td><td class="num">${t[3]}</td></tr>`)
+    );
 
     const tog = document.querySelector(".nav-toggle"), links = document.querySelector("#nav-links");
     tog.addEventListener("click", () => { const o = links.classList.toggle("open"); tog.setAttribute("aria-expanded", o); });

@@ -1,7 +1,7 @@
 /* Small dependency-free SVG chart helpers. */
 (function () {
   const NS = "http://www.w3.org/2000/svg";
-  const COLORS = { sun: "#e8742a", navy: "#1d2a47", gray: "#b9bfca", grayDark: "#8a93a3" };
+  const COLORS = { sun: "#c9693a", navy: "#24477f", gray: "#b4bfcf", grayDark: "#8593a8" };
 
   function el(tag, attrs, parent) {
     const n = document.createElementNS(NS, tag);
@@ -30,9 +30,11 @@
   /**
    * Line chart. series: [{name, values, emphasis}]; xs: years; projectedFrom: year where dashed starts.
    */
-  function lineChart(container, { xs, series, projectedFrom, yMin = 0, yMax: yMaxIn, ticks: ticksIn }) {
+  function lineChart(container, { xs, series, projectedFrom, yMin = 0, yMax: yMaxIn, ticks: ticksIn, labelEvery = 1 }) {
     container.innerHTML = "";
-    const W = 640, H = 340, m = { t: 16, r: 110, b: 32, l: 40 };
+    const cw = container.clientWidth || 640;
+    const W = cw < 640 ? Math.max(320, cw) : 640, H = cw < 640 ? 300 : 340, m = { t: 16, r: 110, b: 32, l: 40 };
+    if (cw < 640 && labelEvery === 1 && xs.length > 6) labelEvery = 2;
     const iw = W - m.l - m.r, ih = H - m.t - m.b;
     const all = series.flatMap(s => s.values);
     const yMax = yMaxIn || niceMax(Math.max(...all) * 1.05);
@@ -48,12 +50,13 @@
       el("text", { x: m.l - 8, y: y(v) + 4, "text-anchor": "end" }, axis).textContent = Math.round(v);
     }
     xs.forEach((yr, i) => {
+      if (i % labelEvery) return;
       el("text", { x: x(i), y: H - 10, "text-anchor": "middle" }, axis).textContent = yr;
     });
     const pi = xs.indexOf(projectedFrom);
     if (pi > 0) {
       const px = (x(pi - 1) + x(pi)) / 2;
-      el("rect", { x: px, y: m.t, width: m.l + iw - px, height: ih, fill: "#f6efe3", opacity: .7 }, svg);
+      el("rect", { x: px, y: m.t, width: m.l + iw - px, height: ih, fill: "#eef3fa", opacity: .7 }, svg);
       el("text", { x: px + 6, y: m.t + 14, class: "lbl" }, svg).textContent = "Projected";
       el("text", { x: px - 6, y: m.t + 14, class: "lbl", "text-anchor": "end" }, svg).textContent = "Actual";
     }
@@ -107,10 +110,12 @@
   /**
    * Horizontal bar chart. rows: [{label, bars:[{key, value, color, tip}]}]; format: fn
    */
-  function barChart(container, { rows, format, maxValue, rowHeight = 26, labelWidth = 150, ariaLabel = "Bar chart" }) {
+  function barChart(container, { rows, format, maxValue, rowHeight = 26, labelWidth = 150, ariaLabel = "Bar chart", refLine, width = 640 }) {
     container.innerHTML = "";
     const nb = rows[0].bars.length;
-    const W = 640, m = { t: 8, r: 80, b: 8, l: labelWidth };
+    const cw = container.clientWidth || width;
+    const W = cw < width ? Math.max(320, cw) : width;
+    const m = { t: 8, r: 70, b: 8, l: Math.min(labelWidth, Math.round(W * 0.36)) };
     const groupH = nb * rowHeight + (nb - 1) * 2 + 18;
     const H = m.t + m.b + rows.length * groupH;
     const iw = W - m.l - m.r;
@@ -141,6 +146,12 @@
         hit.addEventListener("pointerleave", () => { p.setAttribute("opacity", 1); tip.classList.remove("show"); });
       });
     });
+    if (refLine) {
+      const rx = m.l + xs(refLine.value);
+      const ln = el("line", { x1: rx, x2: rx, y1: m.t, y2: H - m.b, stroke: COLORS.navy, "stroke-width": 1, "stroke-dasharray": "3 3", opacity: .5 }, svg);
+      svg.insertBefore(ln, svg.children[1]);
+      el("text", { x: rx + 4, y: m.t + 10, class: "lbl" }, svg).textContent = refLine.label;
+    }
   }
 
   window.Charts = { lineChart, barChart, COLORS };

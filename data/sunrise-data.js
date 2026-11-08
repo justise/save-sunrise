@@ -7,6 +7,8 @@
 window.SITE_CONFIG = {
   campaignName: "Keep Sunrise Open",
   boardVoteDate: "March 8, 2027",
+  // Partner campaign for the petition, stories and legal fund.
+  partnerUrl: "https://sunrisesoars.org/",
   // Contact email for the parent group. Leave "" to hide.
   contactEmail: "",
   lastUpdated: "November 8, 2026"
@@ -66,18 +68,46 @@ window.SUNRISE_DATA = {
       netA: 3407931, netB: 3261170, fixedBefore5: 4083909, addedStaffA: 471783, addedStaffB: 618543,
       residentsMoved: 930, eastSideChanging: 494, districtwideChanging: 1178, walkersToBus: 210,
       routesNow: 32, routesAfter: 38, over45Now: 1, over45After: 1, longestNow: 50, longestAfter: 50,
+      considerations: [
+        { type: "pro", text: "Saves the most: $3.41M a year (Case A), $3.26M (Case B).", src: "S1" },
+        { type: "con", text: "Moves the most students: about 1,178 districtwide, 494 on the east side.", src: "S7" },
+        { type: "con", text: "210 walkers become bus riders, and east-side routes go from 32 to 38.", src: "S2" },
+        { type: "con", text: "Overfills receiving schools. East Ridge would have about 478 students for 408 permanent seats (117%), and Hollywood Hill about 479 for 408.", src: "S12, S4" },
+        { type: "con", text: "Closes three buildings and 1,688 seats, including the only school in these scenarios confirmed on public sewer and inside the growth area (Sunrise).", src: "S3, S6" },
+        { type: "pro", text: "Avoids the most repair costs: about $23.8M scheduled for 2028–29.", src: "S5" },
+        { type: "unknown", text: "Extra sewage hauling at East Ridge and Wellington, which truck their sewage out, isn't counted.", src: "S6" }
+      ],
       rationale: "Zero east side schools at or below 400 students." },
     { id: 2, closes: ["Sunrise", "Moorlands"], keepsSunrise: false,
       whereStudentsGo: "Sunrise to Cottage Lake (SR0 151, SR2 8) and Hollywood Hill (SR1 30); a Cottage Lake area to Hollywood Hill",
       netA: 2220830, netB: 2168524, fixedBefore5: 2771745, addedStaffA: 412328, addedStaffB: 464633,
       residentsMoved: 625, eastSideChanging: 217, districtwideChanging: 901, walkersToBus: 158,
       routesNow: 16, routesAfter: 16, over45Now: 0, over45After: 1, longestNow: 44, longestAfter: 51,
+      considerations: [
+        { type: "con", text: "Saves the least: $2.22M a year (Case A), $2.17M (Case B). The district says it “only partially solves the problem.”", src: "S1, S7" },
+        { type: "con", text: "158 walkers become bus riders, which costs about $254,000 a year at the district's average cost per rider. The longest ride grows from 44 to 51 minutes.", src: "S2, S8" },
+        { type: "con", text: "Overfills Cottage Lake. It would receive 159 Sunrise students and reach about 437 students for 367 seats (119%), with no portables.", src: "S12, S4" },
+        { type: "con", text: "Sends Sunrise students to a building that trucks its sewage out and sits outside the growth area.", src: "S6" },
+        { type: "con", text: "Closes Sunrise just as its enrollment is projected to rebound, to 206 students by 2030.", src: "S3" },
+        { type: "pro", text: "Moves the fewest students of the three: about 901 districtwide.", src: "S7" },
+        { type: "unknown", text: "The added sewage hauling cost at Cottage Lake isn't published.", src: "S6" }
+      ],
       rationale: "Sunrise is “currently the lowest enrolled school”; Scenario 2 “only partially solves the problem.”" },
     { id: 3, closes: ["Hollywood Hill", "Moorlands"], keepsSunrise: true,
       whereStudentsGo: "Hollywood Hill to Sunrise (HH0 70), Cottage Lake (HH1 47, HH3 21), Wellington",
       netA: 2340150, netB: 2182062, fixedBefore5: 2870747, addedStaffA: 387059, addedStaffB: 545147,
       residentsMoved: 697, eastSideChanging: 261, districtwideChanging: 945, walkersToBus: 14,
       routesNow: 26, routesAfter: 28, over45Now: 0, over45After: 2, longestNow: 44, longestAfter: 49,
+      considerations: [
+        { type: "pro", text: "Keeps Sunrise open.", src: "" },
+        { type: "pro", text: "Saves more than Scenario 2 in both cases: $2.34M a year (Case A), $2.18M (Case B).", src: "S1" },
+        { type: "pro", text: "Only 14 walkers become bus riders. The longest ride grows from 44 to 49 minutes.", src: "S2" },
+        { type: "pro", text: "Avoids about $17.4M in repairs scheduled for 2028–29. That includes Hollywood Hill's, the highest per square foot of these schools ($326).", src: "S5" },
+        { type: "pro", text: "Fills seats at Sunrise: about 83 Hollywood Hill students would move to Sunrise.", src: "S12" },
+        { type: "con", text: "Closes Hollywood Hill, which is outside the growth area. A school closed there would be hard to replace, and its families face the same loss.", src: "S6" },
+        { type: "con", text: "Moves 44 more students than Scenario 2 (945 vs. 901), adds two east-side bus routes, and puts two routes over 45 minutes.", src: "S2, S7" },
+        { type: "con", text: "The district's objection: Sunrise “would still be the lowest enrolled school in the district.”", src: "S7" }
+      ],
       rationale: "Sunrise “would still be the lowest enrolled school in the district.”" }
   ],
 
@@ -109,6 +139,66 @@ window.SUNRISE_DATA = {
     { code: "S7", document: "Scenario pages 1, 2, 3 (Northshore SD)", date: "2026-10-26", link: "https://www.nsd.org/fs/pages/15362", provides: "Students changing schools; pockets moved; district's stated rationale." },
     { code: "S8", document: "OSPI Key Performance Indicators, transportation cost per rider", date: "2024-25", link: "https://ospi.k12.wa.us", provides: "Northshore average cost per bus rider, $1,605 (verify current year)." },
     { code: "S9", document: "East Area capacity summary (parent group analysis)", date: "2026-11", link: "", provides: "CFP seats for East Ridge and Wellington; Scenario 1 2030 utilization. Parent analysis, not a district document." },
-    { code: "S10", document: "Northshore director district map (2021 redistricting)", date: "2021", link: "https://resources.finalsite.net/images/v1743701683/nsdorg/ikgpylzwooddxbcoz0is/NSDRedistricting-Map-2021.pdf", provides: "Board director districts." }
-  ]
+    { code: "S10", document: "Northshore director district map (2021 redistricting)", date: "2021", link: "https://resources.finalsite.net/images/v1743701683/nsdorg/ikgpylzwooddxbcoz0is/NSDRedistricting-Map-2021.pdf", provides: "Board director districts." },
+    { code: "S11", document: "NSD Resident Student Projections by Grade and School (Northshore SD)", date: "2026", link: "", provides: "Resident students by grade, 2017-2025 actual and projections to 2034. Totals differ by a few students from S3." },
+    { code: "S12", document: "Closure Net Savings, all scenarios: staffing tiers, unit costs and receiving schools (workbook posted with S1)", date: "2026-11-02", link: "", provides: "Enrollment-based classified staffing tiers, unit costs, pockets moved to each receiving school." }
+  ],
+
+  // ---------- Added for the alternatives tools ----------
+
+  // All NSD elementary schools: design capacity (classrooms x 22.5) and resident students. Source S3.
+  district: [
+    ["Arrowhead", 518, 263, 230, 204], ["Canyon Creek", 1148, 664, 555, 549], ["Cottage Lake", 473, 309, 306, 323],
+    ["Crystal Springs", 608, 622, 596, 605], ["East Ridge", 495, 446, 388, 386], ["Fernwood", 878, 695, 721, 687],
+    ["Frank Love", 765, 479, 507, 544], ["Hollywood Hill", 540, 285, 262, 249], ["Kenmore Elem", 473, 451, 500, 542],
+    ["Kokanee", 765, 615, 625, 636], ["Lockwood", 675, 382, 363, 350], ["Maywood Hills", 563, 509, 559, 614],
+    ["Moorlands", 765, 440, 438, 440], ["Ruby Bridges", 675, 388, 396, 408], ["Shelton View", 608, 529, 515, 521],
+    ["Sunrise", 450, 197, 189, 206], ["Wellington", 585, 338, 336, 359], ["Westhill", 608, 425, 446, 460],
+    ["Woodin", 585, 409, 448, 470], ["Woodmoor", 833, 516, 486, 460]
+  ], // [school, designCapacity, residents2026, residents2028, residents2030]
+  portableClassrooms: 61, // S3; double portables count as 2
+  outOfDistrictResidents: { 2026: 267, 2028: 299, 2030: 323 },
+
+  // Sunrise resident students by grade. Grade-level district file (S11); totals differ by a few students from S3.
+  sunriseGrades: {
+    years: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034],
+    firstProjected: 2026,
+    rows: {
+      "K": [46, 37, 46, 44, 34, 34, 30, 18, 31, 32, 32, 32, 33, 33, 33, 33, 33, 33],
+      "1": [42, 49, 40, 51, 50, 40, 38, 29, 21, 33, 33, 34, 34, 35, 35, 35, 35, 35],
+      "2": [50, 46, 52, 36, 54, 53, 40, 36, 32, 22, 34, 34, 35, 34, 35, 35, 35, 36],
+      "3": [33, 48, 44, 53, 36, 50, 52, 44, 33, 33, 23, 34, 34, 35, 34, 35, 35, 36],
+      "4": [44, 34, 53, 42, 54, 35, 51, 51, 40, 34, 33, 23, 34, 34, 35, 34, 34, 36],
+      "5": [47, 43, 32, 48, 42, 53, 36, 49, 51, 41, 34, 33, 23, 34, 34, 35, 35, 35]
+    },
+    totals: [262, 257, 267, 274, 270, 265, 247, 227, 208, 194, 190, 190, 192, 205, 206, 208, 208, 210]
+  },
+
+  // Pockets (planning areas) the district moves in its scenarios. Source S7, S12.
+  pockets: [
+    { code: "HH0", from: "Hollywood Hill", to: "Sunrise (Scenario 3)", students: 70 },
+    { code: "HH2", from: "Hollywood Hill", to: "Sunrise (Scenario 3)", students: 13 },
+    { code: "HH1 + HH3", from: "Hollywood Hill", to: "Cottage Lake (Scenario 3)", students: 68 },
+    { code: "HH4", from: "Hollywood Hill", to: "Wellington (Scenario 3)", students: 110 },
+    { code: "SR0 + SR2", from: "Sunrise", to: "Cottage Lake (Scenario 2)", students: 159 },
+    { code: "SR1 + SR3", from: "Sunrise", to: "Hollywood Hill (Scenarios 1, 2)", students: 30 },
+    { code: "CL1", from: "Cottage Lake", to: "Hollywood Hill (Scenarios 1, 2)", students: 28 }
+  ],
+
+  // Classified staffing tiers by enrollment and unit costs (S12, from the district's Cost of Small School model).
+  staffing: {
+    tiers: [ // [enrollment lower bound, SA hrs/day, nurse hrs/day, main office sec hrs/day]
+      [0, 7, 6, 4], [300, 8, 6.5, 8], [400, 9, 7, 8], [450, 10, 7.5, 8], [500, 12, 7.5, 8]
+    ],
+    otTiers: [[0, 0], [300, 60], [350, 130], [450, 155], [525, 165]],
+    librarianTiers: [[0, 0.8], [400, 1.0]],
+    perSAHour: 8320, perNurseHour: 14228, mainSec4to8: 51323, otRate: 63.96, perLibrarianTenth: 14873,
+    assessmentStipend: { threshold: 400, below: 2890, above: 4002 },
+    sunriseBaseline: { sa: 7, nurse: 6, mainSec: 4, ot: 0, librarian: 0.8 }
+  },
+
+  // Remaining corrective work 2026-2029 at each school proposed for closure (S5; 2025 shown separately).
+  correctiveRemaining: { "Sunrise": 5568651, "Hollywood Hill": 10351865, "Cottage Lake": 10918741, "Moorlands": 11263109 },
+  corrective2025: { "Sunrise": 5119967, "Hollywood Hill": 7338179, "Cottage Lake": 403298, "Moorlands": 2718437 },
+  enrolledFte: { "Sunrise": 245, "Hollywood Hill": 357, "Cottage Lake": 262, "Moorlands": 460 }
 };

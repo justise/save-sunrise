@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enrollment Tool · Keep Sunrise Open</title>
+  <meta name="description" content="Is Sunrise's enrollment dip temporary? What would it take to fill the building? How many empty seats does the district have?">
+  <meta name="theme-color" content="#24477f">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html"><img src="assets/favicon.svg" width="34" height="34" alt=""><span class="brand-text"><strong>Keep Sunrise Open</strong><small>Alternatives to closure</small></span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul id="nav-links" class="nav-menu">
+        <li><a href="options.html">Options</a></li>
+        <li><a href="enrollment.html" aria-current="page">Enrollment tool</a></li>
+        <li><a href="compare.html">Compare</a></li>
+        <li><a href="data.html">Data</a></li>
+        <li><a class="btn btn-light btn-sm" data-cfg-href="partnerUrl" href="https://sunrisesoars.org/">Sign the petition ↗</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero hero-sm">
+    <div class="wrap">
+      <div class="eyebrow eyebrow-light"><span class="dot"></span>Enrollment tool</div>
+      <h1>Is the dip temporary, and can Sunrise be filled?</h1>
+      <p class="lead">Three questions behind options 1, 4 and 5: what's driving Sunrise's decline, what it would take to fill the building, and how Sunrise compares with every other elementary school in the district.</p>
+      <div class="toc toc-light"><a href="#cohort">One small class</a><a href="#fill">Fill Sunrise</a><a href="#district">Seats districtwide</a></div>
+    </div>
+  </section>
+
+  <main>
+    <section id="cohort">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Option 01</div>
+          <h2>The dip is mostly one small class moving through</h2>
+          <p class="lede">Each row is a grade and each column is a year. Follow the outlined cells to see the 2024 kindergarten class of 18 move up a grade each year. Kindergarten classes before and after it are 30–33.</p>
+        </div>
+        <div class="card">
+          <div class="tbl-wrap" id="cohort-grid"></div>
+          <div class="legend">
+            <span class="key"><span class="sw box" style="background:#e2e9f3"></span>Fewer students</span>
+            <span class="key"><span class="sw box" style="background:#24477f"></span>More students</span>
+            <span class="key"><span class="sw box cohort-key"></span>2024 kindergarten class</span>
+            <span class="key"><em>Italic</em> = projected</span>
+          </div>
+        </div>
+        <div class="feature" style="margin-top:32px">
+          <div>
+            <h3>Total resident students, 2017–2034</h3>
+            <p>District projections show Sunrise leveling off at about 190 and climbing back above 200 once the small class leaves after 2029.<a class="src" href="data.html#sources">S11</a></p>
+            <p class="small">Resident students are children who live in the Sunrise boundary. Enrollment (245 in October 2026) is higher because families also transfer in. This grade-level file totals a few students differently from the district's summary (S3).</p>
+          </div>
+          <div class="card">
+            <div class="chart" id="total-chart"></div>
+            <div class="legend"><span class="key"><span class="sw" style="background:var(--sun)"></span>Sunrise residents</span><span class="key"><span class="sw dash"></span>Projected</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fill" class="alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Option 04</div>
+          <h2>What happens if Sunrise gains students?</h2>
+          <p class="lede">Add students through a boundary change, a program or transfers, and see what happens to Sunrise's cost per student and staffing. Staffing uses the district's own enrollment tiers.</p>
+        </div>
+        <div class="calc">
+          <div class="card">
+            <div class="field">
+              <label for="fill-n">Students added to Sunrise <output id="fill-n-out"></output></label>
+              <input type="range" id="fill-n" min="0" max="220" step="1" value="83">
+              <div class="hint">Starting point: 245 students enrolled in October 2026.</div>
+            </div>
+            <div class="small" style="margin-bottom:6px">Quick picks</div>
+            <div class="btn-row" style="gap:8px;margin-bottom:18px">
+              <button type="button" class="chip" data-fill="83">HH0 + HH2 pockets (+83)</button>
+              <button type="button" class="chip" data-fill="55">Reach 300</button>
+              <button type="button" class="chip" data-fill="155">Reach 400</button>
+            </div>
+            <div class="small" style="margin-bottom:6px">Where do the students come from?</div>
+            <div class="seg" role="group" aria-label="Source of students" style="margin-bottom:10px">
+              <button type="button" data-src="hh" aria-pressed="true">Hollywood Hill pockets</button>
+              <button type="button" data-src="new" aria-pressed="false">Program or transfers</button>
+            </div>
+            <p class="hint" id="src-note"></p>
+          </div>
+          <div>
+            <div class="tiles tiles-3" id="fill-tiles"></div>
+            <div class="card" style="margin-top:16px">
+              <h3 style="font-size:1.05rem">Fixed cost per enrolled student at the four schools proposed for closure</h3>
+              <div class="chart" id="per-student-chart"></div>
+              <p class="small">The district's fixed cost for each building after its 5% reduction, divided by October 2026 enrollment. <span class="calc-tag">calc</span><a class="src" href="data.html#sources">S1</a></p>
+            </div>
+            <details class="table-view card" style="margin-top:16px"><summary>Staffing changes at Sunrise</summary><div class="tbl-wrap" id="staff-table" style="margin-top:10px"></div>
+              <p class="small">Classified staff only, using the district's tiers and unit costs (S12). Teachers follow students and aren't counted, the same way the district's savings model handles them.</p></details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="district">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Option 05</div>
+          <h2>Empty seats are a districtwide issue</h2>
+          <p class="lede">Each bar shows resident students as a share of a school's design capacity. Sunrise is low, but it's one of several schools well under capacity.</p>
+        </div>
+        <div class="tiles" id="district-tiles" style="margin:0 0 20px"></div>
+        <div class="card">
+          <div class="chart-controls">
+            <div class="seg" role="group" aria-label="Year">
+              <button type="button" data-year="2026" aria-pressed="false">2026</button>
+              <button type="button" data-year="2028" aria-pressed="false">2028</button>
+              <button type="button" data-year="2030" aria-pressed="true">2030</button>
+            </div>
+          </div>
+          <div class="chart" id="util-chart"></div>
+          <details class="table-view"><summary>Show as table</summary><div class="tbl-wrap" id="util-table"></div></details>
+          <p class="small">Design capacity = classrooms × 22.5, including portables. Residents exclude out-of-district students, who number about <span id="ood"></span> in <span id="ood-year"></span>.<a class="src" href="data.html#sources">S3</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div><strong style="color:#fff">Keep Sunrise Open</strong><br>Not affiliated with or endorsed by Northshore School District.</div>
+      <div><a href="data.html">Data &amp; sources</a> · <a data-cfg-href="partnerUrl" href="https://sunrisesoars.org/">Sunrise Soars</a></div>
+    </div>
+  </footer>
+
+  <script src="data/sunrise-data.js"></script>
+  <script src="assets/charts.js"></script>
+  <script src="assets/app.js"></script>
+  <script src="assets/enrollment.js"></script>
+</body>
+</html>

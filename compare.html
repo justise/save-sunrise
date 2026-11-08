@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare Options · Keep Sunrise Open</title>
+  <meta name="description" content="Compare the district's closure scenarios with the full set of costs included, and rank the options using your own priorities.">
+  <meta name="theme-color" content="#24477f">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html"><img src="assets/favicon.svg" width="34" height="34" alt=""><span class="brand-text"><strong>Keep Sunrise Open</strong><small>Alternatives to closure</small></span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul id="nav-links" class="nav-menu">
+        <li><a href="options.html">Options</a></li>
+        <li><a href="enrollment.html">Enrollment tool</a></li>
+        <li><a href="compare.html" aria-current="page">Compare</a></li>
+        <li><a href="data.html">Data</a></li>
+        <li><a class="btn btn-light btn-sm" data-cfg-href="partnerUrl" href="https://sunrisesoars.org/">Sign the petition ↗</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero hero-sm">
+    <div class="wrap">
+      <div class="eyebrow eyebrow-light"><span class="dot"></span>Compare options</div>
+      <h1>Which option holds up when you count everything?</h1>
+      <p class="lead">Start from the district's savings estimates, add the costs they leave out, and then rank the options by what matters most to you. "No closure now" means keeping all schools open and checking enrollment again in 2028.</p>
+      <div class="toc toc-light"><a href="#full-cost">Full cost</a><a href="#scorecard">Scorecard</a></div>
+    </div>
+  </section>
+
+  <main>
+    <section id="full-cost">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Options 02 and 03</div>
+          <h2>Full cost over several years</h2>
+          <p class="lede">The district's figures are annual savings. Set the costs it hasn't published to see the total over the years you choose. Everything defaults to the district's numbers, with each unpublished cost set to zero.</p>
+        </div>
+        <div class="calc">
+          <div class="card">
+            <div class="case-toggle">
+              <div class="small" style="margin-bottom:6px">District estimate: Case A uses projected 2028 residents, Case B uses Oct 2026 enrollment</div>
+              <div class="seg" role="group" aria-label="District case">
+                <button type="button" data-case="A" aria-pressed="true">Case A</button>
+                <button type="button" data-case="B" aria-pressed="false">Case B</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="in-years">Years to count <output id="out-years"></output></label>
+              <input type="range" id="in-years" min="1" max="10" step="1">
+            </div>
+            <div class="field">
+              <label for="in-bus">Cost per new bus rider <output id="out-bus"></output></label>
+              <input type="range" id="in-bus" min="0" max="4000" step="25">
+              <div class="hint">Default $1,605 is Northshore's average cost per rider.<a class="src" href="data.html#sources">S8</a></div>
+            </div>
+            <div class="field">
+              <label for="in-onetime">One-time cost per closed school <output id="out-onetime"></output></label>
+              <input type="range" id="in-onetime" min="0" max="3000000" step="50000">
+              <div class="hint">Moving, setup at receiving schools, transition. Not published.</div>
+            </div>
+            <div class="field">
+              <label for="in-upkeep">Yearly upkeep per closed building <output id="out-upkeep"></output></label>
+              <input type="range" id="in-upkeep" min="0" max="300000" step="5000">
+              <div class="hint">The district says it has no plan to sell buildings. Not published.</div>
+            </div>
+            <div class="field">
+              <label for="in-leave">Moved students who leave the district <output id="out-leave"></output></label>
+              <input type="range" id="in-leave" min="0" max="25" step="1">
+            </div>
+            <div class="field">
+              <label for="in-fund">State funding lost per student who leaves <output id="out-fund"></output></label>
+              <input type="range" id="in-fund" min="0" max="20000" step="250">
+              <div class="hint">Placeholder; replace with a sourced per-pupil figure.</div>
+            </div>
+            <div class="field">
+              <label for="in-sewage">Added sewage hauling, Scenario 2 ($/yr) <output id="out-sewage"></output></label>
+              <input type="number" id="in-sewage" min="0" step="1000">
+            </div>
+            <div class="small" style="margin-bottom:6px">Repairs avoided at closed schools</div>
+            <div class="seg" role="group" aria-label="Repairs avoided" style="margin-bottom:6px">
+              <button type="button" data-rep="none" aria-pressed="false">Don't count</button>
+              <button type="button" data-rep="late" aria-pressed="true">2028–29</button>
+              <button type="button" data-rep="all" aria-pressed="false">2026–29</button>
+            </div>
+            <div class="hint" style="margin-bottom:16px">Closures can't take effect before fall 2028, so work planned for 2026–27 probably happens either way.<a class="src" href="data.html#sources">S5</a></div>
+            <div class="btn-row" style="gap:8px">
+              <button type="button" class="btn btn-ghost btn-sm" id="reset">Reset</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="share">Copy link to these settings</button>
+            </div>
+            <div class="hint" id="share-msg" aria-live="polite"></div>
+          </div>
+          <div class="card">
+            <div class="chart" id="total-chart"></div>
+            <div class="legend" id="total-legend"></div>
+            <div class="tbl-wrap" id="cost-table" style="margin-top:14px"></div>
+            <p class="small" style="margin-top:12px">Annual = district net savings − busing (walkers who become riders × cost per rider) − lost funding − sewage − upkeep. Total = annual × years − one-time costs + repairs avoided. Everything beyond the district's net savings is our calculation. <span class="calc-tag">calc</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scorecard" class="alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Scorecard</div>
+          <h2>Rank the options by what matters to you</h2>
+          <p class="lede">Each option gets 0–100 points per factor: the best option on that factor gets 100 and the worst gets 0. Weights decide how much each factor counts. Savings and repairs come from the full-cost settings above.</p>
+        </div>
+        <div class="calc">
+          <div class="card" id="weights"></div>
+          <div class="card">
+            <div class="chart" id="score-chart"></div>
+            <div class="legend">
+              <span class="key"><span class="sw box" style="background:var(--sun)"></span>Keeps Sunrise open</span>
+              <span class="key"><span class="sw box" style="background:#b9bfca"></span>Closes Sunrise</span>
+            </div>
+            <div class="tbl-wrap" id="score-table" style="margin-top:14px"></div>
+            <p class="small" style="margin-top:12px">The scorecard compares only the options we have numbers for. Filling Sunrise (option 4) and retiring portables (option 5) need district analysis before they can be scored.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div><strong style="color:#fff">Keep Sunrise Open</strong><br>Not affiliated with or endorsed by Northshore School District.</div>
+      <div><a href="data.html">Data &amp; sources</a> · <a data-cfg-href="partnerUrl" href="https://sunrisesoars.org/">Sunrise Soars</a></div>
+    </div>
+  </footer>
+
+  <script src="data/sunrise-data.js"></script>
+  <script src="assets/charts.js"></script>
+  <script src="assets/app.js"></script>
+  <script src="assets/compare.js"></script>
+</body>
+</html>
