@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data &amp; Sources · Keep Sunrise Open</title>
+  <meta name="description" content="The numbers behind Keep Sunrise Open, with a source for every figure.">
+  <meta name="theme-color" content="#1d2a47">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="data-page">
+  <nav class="nav" aria-label="Main">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="assets/favicon.svg" width="28" height="28" alt=""> Keep Sunrise Open</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul id="nav-links">
+        <li><a href="index.html#situation">Where things stand</a></li>
+        <li><a href="index.html#better-path">A better path</a></li>
+        <li><a href="index.html#numbers">Run the numbers</a></li>
+        <li><a href="index.html#stories">Stories</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" style="padding:48px 0 32px">
+    <div class="wrap">
+      <div class="eyebrow">Data &amp; sources</div>
+      <h1 style="font-size:clamp(2rem,5vw,3rem)">What the data show</h1>
+      <p class="lede">Every figure on this site comes from a district or public document, listed below. Figures marked <span class="calc-tag">calc</span> are our own calculations from those documents, not district figures.</p>
+      <div class="toc">
+        <a href="#schools">Schools</a><a href="#enrollment">Enrollment</a><a href="#scenarios">Scenarios</a>
+        <a href="#fixed">Fixed costs</a><a href="#facility">Facility condition</a><a href="#definitions">Definitions</a><a href="#sources">Sources</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="schools"><div class="wrap">
+      <h2>Schools in the scenarios</h2>
+      <div class="tbl-wrap" id="t-schools"></div>
+      <p class="small">Sources: S3 (classrooms, design capacity, acres), S4 (seats, build years), S1 (enrollment), S6 (sewer), S5 (corrective work, square footage), S10 (director district).</p>
+    </div></section>
+
+    <section id="enrollment" class="alt"><div class="wrap">
+      <h2>Resident students by attendance area</h2>
+      <p>Children living in each attendance area. 2023–2026 are actual counts; 2027–2030 are district projections.</p>
+      <div class="tbl-wrap" id="t-enroll"></div>
+      <p class="small">Source: S3.</p>
+    </div></section>
+
+    <section id="scenarios"><div class="wrap">
+      <h2>The three scenarios</h2>
+      <div class="tbl-wrap" id="t-scen"></div>
+      <p class="small">Sources: S1 (savings, staffing), S2 (busing), S7 (students moved, rationale). Case A uses projected 2028 residents; Case B uses October 2026 enrollment plus incoming pockets.</p>
+    </div></section>
+
+    <section id="fixed" class="alt"><div class="wrap">
+      <h2>Fixed costs by closing school</h2>
+      <div class="tbl-wrap" id="t-fixed"></div>
+      <p class="small">Source: S1. "Building only" covers utilities, facility manager and custodian, after the district's 5% reduction.</p>
+    </div></section>
+
+    <section id="facility"><div class="wrap">
+      <h2>Facility condition: corrective work, 2025–2029</h2>
+      <div class="tbl-wrap" id="t-fac"></div>
+      <p class="small">Source: S5. Five-year totals are sums of the yearly rows. Per-square-foot figures are from the compiled data set.</p>
+    </div></section>
+
+    <section id="definitions" class="alt"><div class="wrap">
+      <h2>Definitions</h2>
+      <ul>
+        <li><strong>Resident students</strong> are children who live in an attendance area. <strong>Enrolled FTE</strong> counts who actually attends.</li>
+        <li><strong>Design capacity (EDAC)</strong> = classrooms × 22.5, including portables. <strong>Planned seats (CFP)</strong> = the official plan at 20.4 students per room.</li>
+        <li><strong>Busing illustration</strong> = walkers who become bus riders × average cost per rider. It is not the marginal cost of new routes.</li>
+        <li><strong>UGA</strong> = King County Urban Growth Area.</li>
+      </ul>
+    </div></section>
+
+    <section id="sources"><div class="wrap">
+      <h2>Sources</h2>
+      <div class="tbl-wrap" id="t-src"></div>
+      <p class="small" id="credit"></p>
+    </div></section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div><strong style="color:#fff">Keep Sunrise Open</strong><br>Not affiliated with or endorsed by Northshore School District.</div>
+      <div><a href="index.html">Back to home</a></div>
+    </div>
+  </footer>
+
+  <script src="data/sunrise-data.js"></script>
+  <script>
+  (function () {
+    const D = window.SUNRISE_DATA;
+    const $ = s => document.querySelector(s);
+    const f$ = v => v == null ? "—" : "$" + Math.round(v).toLocaleString("en-US");
+    const n = v => v == null ? "—" : Number(v).toLocaleString("en-US");
+    const hl = name => name === "Sunrise" ? ' class="hl"' : "";
+    const table = (head, rows) => `<table><thead><tr>${head.map(h => `<th${h.num ? ' class="num"' : ""}>${h.t}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table>`;
+
+    $("#t-schools").innerHTML = table(
+      [{t:"School"},{t:"Built"},{t:"Modernized"},{t:"Rooms (perm + port.)",num:1},{t:"Design capacity",num:1},{t:"Planned seats",num:1},{t:"Enrolled Oct 2026",num:1},{t:"Acres",num:1},{t:"Sewer"},{t:"Growth area"},{t:"Corrective work 2025–29",num:1},{t:"$/sq ft",num:1},{t:"Director district",num:1}],
+      D.schools.map(s => `<tr${hl(s.school)}><td>${s.school}</td><td>${s.built ?? "—"}</td><td>${s.modernized ?? "—"}</td><td class="num">${s.permanent_classrooms} + ${s.portable_classrooms}</td><td class="num">${s.design_capacity_edac}</td><td class="num">${s.cfp_total_seats}</td><td class="num">${n(s.enrolled_fte_oct2026)}</td><td class="num">${s.site_acres}</td><td>${s.sewer}</td><td>${s.uga}</td><td class="num">${f$(s.corrective_2025_2029)}</td><td class="num">$${s.corrective_per_sqft}</td><td class="num">${s.director_district}</td></tr>`)
+    );
+
+    $("#t-enroll").innerHTML = table(
+      [{t:"School"}, ...D.years.map(y => ({t: y + (y >= D.firstProjectedYear ? "*" : ""), num:1}))],
+      Object.entries(D.residents).map(([k, v]) => `<tr${hl(k)}><td>${k}</td>${v.map(x => `<td class="num">${x}</td>`).join("")}</tr>`)
+    ) + '<p class="small">* Projected</p>';
+
+    const rowsS = [
+      ["Schools closed", s => s.closes.join(", ")],
+      ["Where students go", s => s.whereStudentsGo],
+      ["Net annual savings, Case A", s => f$(s.netA)],
+      ["Net annual savings, Case B", s => f$(s.netB)],
+      ["Fixed-cost savings before 5%", s => f$(s.fixedBefore5)],
+      ["Added staffing at receiving schools, Case A", s => f$(s.addedStaffA)],
+      ["Added staffing at receiving schools, Case B", s => f$(s.addedStaffB)],
+      ["Residents of closing schools moved", s => n(s.residentsMoved)],
+      ["East-side students changing schools (approx.)", s => n(s.eastSideChanging)],
+      ["Districtwide students changing schools (approx.)", s => n(s.districtwideChanging)],
+      ["Walkers who become bus riders", s => n(s.walkersToBus)],
+      ["East-side bus routes, now → after", s => `${s.routesNow} → ${s.routesAfter}`],
+      ["Routes over 45 min, now → after", s => `${s.over45Now} → ${s.over45After}`],
+      ["Longest ride (min), now → after", s => `${s.longestNow} → ${s.longestAfter}`],
+      ["District rationale", s => s.rationale]
+    ];
+    $("#t-scen").innerHTML = table(
+      [{t:""}, ...D.scenarios.map(s => ({t: `Scenario ${s.id}` + (s.keepsSunrise ? " (keeps Sunrise)" : "")}))],
+      rowsS.map(([label, fn]) => `<tr><th style="background:none">${label}</th>${D.scenarios.map(s => `<td>${fn(s)}</td>`).join("")}</tr>`)
+    );
+
+    $("#t-fixed").innerHTML = table(
+      [{t:"School"},{t:"Total general fund",num:1},{t:"After 5% reduction",num:1},{t:"Building only (after 5%)",num:1}],
+      Object.entries(D.fixedCosts).map(([k, v]) => `<tr${hl(k)}><td>${k}</td><td class="num">${f$(v.total)}</td><td class="num">${f$(v.after5)}</td><td class="num">${f$(v.buildingOnlyAfter5)}</td></tr>`)
+    );
+
+    $("#t-fac").innerHTML = table(
+      [{t:"School"}, ...D.facilityYears.map(y => ({t:y, num:1})), {t:"Five-year total", num:1}],
+      Object.entries(D.facilityCondition).map(([k, v]) => `<tr${hl(k)}><td>${k}</td>${v.map(x => `<td class="num">${f$(x)}</td>`).join("")}<td class="num"><strong>${f$(v.reduce((a, b) => a + b, 0))}</strong></td></tr>`)
+    );
+
+    $("#t-src").innerHTML = table(
+      [{t:"Code"},{t:"Document"},{t:"Date"},{t:"What it provides"}],
+      D.sources.map(s => `<tr><td><strong>${s.code}</strong></td><td>${s.link ? `<a href="${s.link}" target="_blank" rel="noopener">${s.document}</a>` : s.document + ' <span class="small">(PDF shared in the Keep Sunrise Open group)</span>'}</td><td>${s.date}</td><td>${s.provides}</td></tr>`)
+    );
+    if (D.credit) $("#credit").textContent = D.credit;
+
+    const tog = document.querySelector(".nav-toggle"), links = document.querySelector("#nav-links");
+    tog.addEventListener("click", () => { const o = links.classList.toggle("open"); tog.setAttribute("aria-expanded", o); });
+  })();
+  </script>
+</body>
+</html>

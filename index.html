@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keep Sunrise Open</title>
+  <meta name="description" content="Families, staff and neighbors working to keep Sunrise Elementary open. What's proposed, what the district's own data show, and better options before the March 2027 board vote.">
+  <meta property="og:title" content="Keep Sunrise Open">
+  <meta property="og:description" content="What's proposed for Sunrise Elementary, what the data show, and better options before the March 2027 board vote.">
+  <meta name="theme-color" content="#1d2a47">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="banner">Proposal stage · no decision yet · <strong>Board vote: <span data-cfg="boardVoteDate">March 8, 2027</span></strong></div>
+
+  <nav class="nav" aria-label="Main">
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="assets/favicon.svg" width="28" height="28" alt=""> Keep Sunrise Open</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul id="nav-links">
+        <li><a href="#situation">Where things stand</a></li>
+        <li><a href="#facts">The facts</a></li>
+        <li><a href="#better-path">A better path</a></li>
+        <li><a href="#numbers">Run the numbers</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="data.html">Data &amp; sources</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero home" id="top">
+    <svg class="hero-art" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="sunGlow" cx="50%" cy="100%" r="60%">
+          <stop offset="0" stop-color="#f4bf4f" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#f4bf4f" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect x="0" y="0" width="1200" height="220" fill="url(#sunGlow)"/>
+      <g stroke="#f0a24a" stroke-width="3" stroke-linecap="round" opacity=".55">
+        <line x1="600" y1="150" x2="600" y2="40"/><line x1="600" y1="150" x2="520" y2="62"/><line x1="600" y1="150" x2="680" y2="62"/>
+        <line x1="600" y1="150" x2="455" y2="105"/><line x1="600" y1="150" x2="745" y2="105"/>
+      </g>
+      <circle cx="600" cy="190" r="70" fill="#e8742a"/>
+      <path d="M0 175 C 200 150, 380 185, 600 168 S 1000 150, 1200 172 L1200 220 L0 220 Z" fill="#2c3b5e" opacity=".22"/>
+      <path d="M0 195 C 260 178, 420 205, 640 192 S 1000 182, 1200 196 L1200 220 L0 220 Z" fill="#1d2a47" opacity=".35"/>
+    </svg>
+    <div class="wrap">
+      <div class="status-pill"><span class="dot"></span> The district is weighing closing Sunrise Elementary</div>
+      <h1>Keep <span>Sunrise</span> open.</h1>
+      <p class="lede">Two of the district's three closure scenarios would close Sunrise. We're Sunrise families, staff and neighbors. We think the district's own numbers point to better options, and we want the board to see them before it votes in March.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#better-path">See our proposal</a>
+        <a class="btn btn-ghost" href="#numbers">Run the numbers yourself</a>
+      </div>
+
+      <div class="tiles" aria-label="Key numbers">
+        <div class="tile"><div class="num">245</div><div class="label">students enrolled at Sunrise, October 2026<a class="src" href="data.html#sources">S1</a></div></div>
+        <div class="tile"><div class="num">+48</div><div class="label">more students attend than live in the boundary (245 vs. 197) <span class="calc-tag">calc</span></div></div>
+        <div class="tile"><div class="num">206</div><div class="label">resident students projected by 2030, up from a 2028 low of 189<a class="src" href="data.html#sources">S3</a></div></div>
+        <div class="tile"><div class="num">1 of 6</div><div class="label">schools in these scenarios confirmed on public sewer: Sunrise<a class="src" href="data.html#sources">S6</a></div></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- WHERE THINGS STAND -->
+    <section id="situation">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Where things stand</div>
+          <h2>The district is weighing three closure scenarios</h2>
+          <p class="lede">Northshore School District says east-side elementary enrollment has fallen and is uneven across schools. On October 26 it presented three scenarios. Sunrise closes in two of them. Nothing is final, and there's still time to be heard.</p>
+        </div>
+        <div class="scenarios" id="scenario-cards"></div>
+        <p class="small" style="margin-top:14px">Net annual savings are the district's general-fund estimates (2026–27 dollars). Case A uses projected 2028 residents; Case B uses October 2026 enrollment.<a class="src" href="data.html#sources">S1</a> Bus figures are from the district's transportation reports.<a class="src" href="data.html#sources">S2</a></p>
+
+        <h3 style="margin-top:56px">What happens next</h3>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <!-- THE FACTS -->
+    <section id="facts" class="alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">The facts</div>
+          <h2>What the district's own data show about Sunrise</h2>
+        </div>
+
+        <div class="feature">
+          <div>
+            <h3>Enrollment is leveling off and then rising</h3>
+            <p>The number of children living in the Sunrise boundary fell from 247 to 197 between 2023 and 2026. The district's own projection has it flattening at about 190 and then climbing to 206 by 2030. That's about 9% growth from 2028 to 2030, the fastest of any school in these scenarios.<a class="src" href="data.html#sources">S3</a></p>
+            <p>Families also choose Sunrise: 245 students attend, about 48 more than live in the boundary.</p>
+            <p class="small">Resident students are children who live in an attendance area. That's different from enrollment, which counts who attends.</p>
+          </div>
+          <div class="card">
+            <div class="chart-controls">
+              <div class="seg" role="group" aria-label="Compare">
+                <button type="button" data-enroll="sunrise" aria-pressed="true">Sunrise</button>
+                <button type="button" data-enroll="all" aria-pressed="false">Compare east-side schools</button>
+              </div>
+            </div>
+            <div class="chart" id="enroll-chart"></div>
+            <div class="legend" id="enroll-legend"></div>
+            <details class="table-view"><summary>Show as table</summary><div class="tbl-wrap" id="enroll-table"></div></details>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div>
+            <h3>Sunrise is a site the district can grow on</h3>
+            <p>Sunrise sits inside the Urban Growth Area on 11 acres with public sewer. Hollywood Hill, Cottage Lake and East Ridge are outside the growth area. Cottage Lake, East Ridge and Wellington truck their sewage out.<a class="src" href="data.html#sources">S6</a></p>
+            <p>A closed school is hard to get back. If enrollment returns, Sunrise is the east-side building best placed to take more students.</p>
+          </div>
+          <div class="card">
+            <div class="tbl-wrap" id="infra-table"></div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div>
+            <h3>Most of the "savings" would be people, not the building</h3>
+            <p>The district counts $1.25 million a year in fixed costs for Sunrise after its 5% adjustment. Only about $287,000 of that is the building itself: utilities, facility manager and custodian.<a class="src" href="data.html#sources">S1</a></p>
+            <p>The rest pays the principal, counselor, nurse, librarian and office staff who serve Sunrise kids every day.</p>
+          </div>
+          <div class="card">
+            <div class="chart" id="fixed-chart"></div>
+            <details class="table-view"><summary>Show as table</summary><div class="tbl-wrap" id="fixed-table"></div></details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- A BETTER PATH -->
+    <section id="better-path">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">A better path</div>
+          <h2>Alternatives we're asking the board to consider</h2>
+          <p class="lede">We don't think the board should close Sunrise. If it decides closures are needed, the district's own figures don't favor closing Sunrise.</p>
+        </div>
+
+        <div class="callout">
+          <h3>The district's own scenario that keeps Sunrise saves more</h3>
+          <p>Scenario 3 keeps Sunrise open. By the district's estimate it saves <span class="big" id="s3-net">$2.34M</span> a year (Case A), more than Scenario 2, which closes Sunrise ($2.22M). It saves more in Case B too. It turns 14 walkers into bus riders, compared with 158 under Scenario 2.<a class="src" href="data.html#sources" style="color:#f4bf4f">S1, S2</a></p>
+          <p style="margin:0">The district's stated objection is that Sunrise "would still be the lowest enrolled school in the district." Scenario 3 sends about 70 Hollywood Hill students to Sunrise. That fills seats the district already pays to maintain.</p>
+        </div>
+
+        <div class="alts">
+          <div class="alt-card">
+            <div class="n">1</div>
+            <h3>Fill Sunrise instead of emptying it</h3>
+            <p>Sunrise has 429 planned seats and 245 students, which leaves about 184 open seats.<span class="calc-tag">calc</span> Nearby Hollywood Hill and Wellington still count on 102 portable seats between them.<a class="src" href="data.html#sources">S4</a></p>
+            <ul>
+              <li>Adjust boundaries so nearby neighborhoods attend Sunrise</li>
+              <li>Move students out of portables and into permanent classrooms</li>
+            </ul>
+          </div>
+          <div class="alt-card">
+            <div class="n">2</div>
+            <h3>Put a program at Sunrise</h3>
+            <p>Sunrise is inside the growth area on public sewer, so it's the easiest east-side site to add students to.</p>
+            <ul>
+              <li>Place a preschool, regional or specialty program at Sunrise</li>
+              <li>Use open rooms for before- and after-school care that working families need</li>
+            </ul>
+          </div>
+          <div class="alt-card">
+            <div class="n">3</div>
+            <h3>Wait for the rebound</h3>
+            <p>The district projects Sunrise resident students to bottom out in 2028 and rise to 206 by 2030.<a class="src" href="data.html#sources">S3</a> Closure is permanent; projections can be checked.</p>
+            <ul>
+              <li>Revisit enrollment in 2–3 years before any permanent closure</li>
+              <li>Set a clear, public enrollment threshold now</li>
+            </ul>
+          </div>
+          <div class="alt-card">
+            <div class="n">4</div>
+            <h3>Publish the full cost before voting</h3>
+            <p>The posted savings leave out costs that could shrink the gap between scenarios.</p>
+            <ul>
+              <li>One-time closure and moving costs</li>
+              <li>Added busing and longer rides</li>
+              <li>Extra sewage hauling at receiving schools</li>
+              <li>State funding lost if families leave the district</li>
+              <li>Upkeep of a closed building</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RUN THE NUMBERS -->
+    <section id="numbers" class="alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Run the numbers</div>
+          <h2>What happens to "savings" when you count more costs?</h2>
+          <p class="lede">Start with the district's net savings, then subtract the costs the district hasn't included. Move the sliders to try your own assumptions.</p>
+        </div>
+        <div class="calc">
+          <div class="card">
+            <div class="case-toggle">
+              <div class="small" style="margin-bottom:6px">District estimate: Case A uses projected 2028 residents, Case B uses Oct 2026 enrollment</div>
+              <div class="seg" role="group" aria-label="District case">
+                <button type="button" data-case="A" aria-pressed="true">Case A</button>
+                <button type="button" data-case="B" aria-pressed="false">Case B</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="in-bus">Cost per new bus rider <output id="out-bus"></output></label>
+              <input type="range" id="in-bus" min="0" max="4000" step="25">
+              <div class="hint">Default $1,605 is Northshore's average cost per rider (OSPI).<a class="src" href="data.html#sources">S8</a></div>
+            </div>
+            <div class="field">
+              <label for="in-leave">Moved students who leave the district <output id="out-leave"></output></label>
+              <input type="range" id="in-leave" min="0" max="25" step="1">
+              <div class="hint">Your assumption. Families who are moved sometimes choose private, charter or another district.</div>
+            </div>
+            <div class="field">
+              <label for="in-fund">State funding lost per student who leaves <output id="out-fund"></output></label>
+              <input type="range" id="in-fund" min="0" max="20000" step="250">
+              <div class="hint">Placeholder assumption; replace with a sourced per-pupil figure.</div>
+            </div>
+            <div class="field">
+              <label for="in-sewage">Added sewage hauling, Scenario 2 ($/yr) <output id="out-sewage"></output></label>
+              <input type="number" id="in-sewage" min="0" step="1000">
+              <div class="hint">Not published. Scenario 2 sends most Sunrise students to Cottage Lake, which trucks its sewage.</div>
+            </div>
+            <button type="button" class="btn btn-ghost" id="calc-reset" style="padding:8px 14px;font-size:.9rem">Reset to defaults</button>
+          </div>
+          <div class="card">
+            <div class="chart" id="calc-chart"></div>
+            <div class="legend" id="calc-legend"></div>
+            <div class="tbl-wrap" id="calc-table" style="margin-top:14px"></div>
+            <p class="small" style="margin-top:12px">Busing = walkers who become bus riders × cost per rider. It illustrates the cost; it isn't the marginal cost of new routes. Lost funding = residents moved × share leaving × funding per student. Adjusted figures are our calculations, not district figures.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORIES -->
+    <section id="stories">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Sunrise stories</div>
+          <h2>Why Sunrise matters</h2>
+          <p class="lede">Numbers only tell part of it. Families, teachers, alumni and neighbors share what Sunrise means to them.</p>
+        </div>
+        <div class="chart-controls story-filters">
+          <div class="seg" role="group" aria-label="Filter stories" id="story-filters"></div>
+        </div>
+        <div class="stories" id="story-wall"></div>
+
+        <div class="card" id="share" style="max-width:720px;margin-top:24px">
+          <h3>Share your story</h3>
+          <p class="small">We'll review stories before they're posted. Two or three specific sentences go a long way.</p>
+          <form name="sunrise-story" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="thanks.html">
+            <input type="hidden" name="form-name" value="sunrise-story">
+            <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
+            <div class="field"><label for="f-name">Name (as you'd like it shown)</label><input type="text" id="f-name" name="name" required style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit"></div>
+            <div class="field"><label for="f-role">I'm a…</label>
+              <select id="f-role" name="role" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit">
+                <option>Parent</option><option>Teacher &amp; staff</option><option>Alumni</option><option>Neighbor</option><option>Student</option>
+              </select></div>
+            <div class="field"><label for="f-email">Email (optional, never shown)</label><input type="email" id="f-email" name="email" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit"></div>
+            <div class="field"><label for="f-story">Your story</label><textarea id="f-story" name="story" rows="5" required style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit"></textarea></div>
+            <label class="small" style="display:flex;gap:8px;align-items:flex-start;margin-bottom:14px"><input type="checkbox" name="permission" value="yes" required> I'm OK with this story appearing on this site and being shared with the school board.</label>
+            <button class="btn btn-primary" type="submit">Send my story</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <strong style="color:#fff">Keep Sunrise Open</strong><br>
+        A volunteer group of Sunrise Elementary families and neighbors.<br>
+        Not affiliated with or endorsed by Northshore School District.
+        <span id="contact-line"></span>
+      </div>
+      <div>
+        <a href="data.html">Data &amp; sources</a><br>
+        <span class="small" style="color:#9aa5bb">Last updated <span data-cfg="lastUpdated"></span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/sunrise-data.js"></script>
+  <script src="data/stories.js"></script>
+  <script src="assets/charts.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
