@@ -157,6 +157,18 @@ window.SUNRISE_DATA = {
     ["Sunrise", 450, 197, 189, 206], ["Wellington", 585, 338, 336, 359], ["Westhill", 608, 425, 446, 460],
     ["Woodin", 585, 409, 448, 470], ["Woodmoor", 833, 516, 486, 460]
   ], // [school, designCapacity, residents2026, residents2028, residents2030]
+  // 2025-26 instructional capacity for every elementary school, from the Capital Facilities Plan,
+  // Table 4.2 (S4, p. 14). [permanent, portable, total]. Capacity = instructional classrooms x average
+  // class size, with 15% of capacity reserved for support programs and teacher planning (S4, Table 3.2).
+  cfpCapacity: {
+    "Arrowhead": [326, 82, 408], "Canyon Creek": [796, 245, 1041], "Cottage Lake": [367, 0, 367],
+    "Crystal Springs": [530, 0, 530], "East Ridge": [408, 0, 408], "Fernwood": [490, 265, 755],
+    "Frank Love": [326, 265, 591], "Hollywood Hill": [408, 41, 449], "Kenmore Elem": [428, 0, 428],
+    "Kokanee": [428, 245, 673], "Lockwood": [510, 102, 612], "Maywood Hills": [490, 0, 490],
+    "Moorlands": [510, 184, 694], "Ruby Bridges": [612, 0, 612], "Shelton View": [367, 122, 489],
+    "Sunrise": [388, 41, 429], "Wellington": [449, 61, 510], "Westhill": [326, 184, 510],
+    "Woodin": [530, 0, 530], "Woodmoor": [816, 0, 816]
+  },
   portableClassrooms: 61, // S3; double portables count as 2
   outOfDistrictResidents: { 2026: 267, 2028: 299, 2030: 323 },
 

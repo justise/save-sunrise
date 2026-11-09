@@ -17,8 +17,8 @@
   const students = (n, st) => ROWS[n][YEAR_COL[st.year]];
   function cap(n, st) {
     if (st.measure === "design") return { v: ROWS[n][1], est: false };
-    const p = INFO[n] && INFO[n].cfp_permanent_seats;
-    return p ? { v: p, est: false } : { v: Math.round(ROWS[n][1] / 22.5 * 20.4), est: true };
+    const c = D.cfpCapacity[n];
+    return c ? { v: c[0], est: false } : { v: Math.round(ROWS[n][1] / 22.5 * 20.4), est: true };
   }
   const fixed = n => D.fixedCosts[n] ? { v: D.fixedCosts[n].after5, est: false } : { v: AVG_FIXED, est: true };
   const repairs = n => D.facilityCondition[n] ? REPAIR_IDX.reduce((a, i) => a + D.facilityCondition[n][i], 0) : null;
@@ -111,8 +111,8 @@
     $("#year-seg").innerHTML = Object.keys(YEAR_COL).map(y => `<button type="button" data-y="${y}" aria-pressed="${+y === st.year}">${y}${+y > 2026 ? " (proj.)" : ""}</button>`).join("");
     $$("#measure-seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === st.measure));
     $("#measure-hint").textContent = st.measure === "perm"
-      ? "Permanent classrooms only, at 20.4 students each. Published for 6 schools; estimated for the rest."
-      : "All classrooms including portables, at 22.5 students each. Published for every school.";
+      ? "The district's planning capacity for permanent classrooms only, no portables, from the Capital Facilities Plan."
+      : "Every classroom including portables, at 22.5 students each, with no rooms held back for specialists. The measure EDAC uses.";
     $("#thr").value = st.thr; $("#thr-out").textContent = st.thr + "%";
   }
 
@@ -243,7 +243,7 @@
     add("unknown", "Busing", "New bus routes, ride times and walkers who'd need a bus depend on actual boundaries. Only the district's routing analysis can answer this.", "S2");
     const estCap = recvNames.concat(st.closed).filter(n => cap(n, st).est);
     if (estCap.length || x.anyEstFixed) add("unknown", "Some figures are estimates",
-      [estCap.length ? `Permanent seats for ${estCap.join(", ")} are estimated from classroom counts.` : "",
+      [estCap.length ? `Capacity for ${estCap.join(", ")} is estimated.` : "",
        x.anyEstFixed ? `Fixed costs for ${st.closed.filter(c => fixed(c).est).join(", ")} use the average of the four schools the district published.` : ""].join(" ").trim(), "");
 
     const MARK = { pro: ["✓", "Works"], con: ["!", "Concern"], unknown: ["?", "Unknown"] };
