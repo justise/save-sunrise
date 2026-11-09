@@ -69,13 +69,13 @@ window.SUNRISE_DATA = {
       residentsMoved: 930, eastSideChanging: 494, districtwideChanging: 1178, walkersToBus: 210,
       routesNow: 32, routesAfter: 38, over45Now: 1, over45After: 1, longestNow: 50, longestAfter: 50,
       considerations: [
-        { type: "pro", text: "Saves the most: $3.41M a year (Case A), $3.26M (Case B).", src: "S1" },
-        { type: "con", text: "Moves the most students: about 1,178 districtwide, 494 on the east side.", src: "S7" },
-        { type: "con", text: "210 walkers become bus riders, and east-side routes go from 32 to 38.", src: "S2" },
-        { type: "con", text: "Overfills receiving schools. East Ridge would have about 478 students for 408 permanent seats (117%), and Hollywood Hill about 479 for 408.", src: "S12, S4" },
-        { type: "con", text: "Closes three buildings and 1,688 seats, including the only school in these scenarios confirmed on public sewer and inside the growth area (Sunrise).", src: "S3, S6" },
-        { type: "pro", text: "Avoids the most repair costs: about $23.8M scheduled for 2028–29.", src: "S5" },
-        { type: "unknown", text: "Extra sewage hauling at East Ridge and Wellington, which truck their sewage out, isn't counted.", src: "S6" }
+        { type: "pro", head: "Biggest savings", text: "Saves the most: $3.41M a year (Case A), $3.26M (Case B).", src: "S1" },
+        { type: "con", head: "Most students moved", text: "Moves the most students: about 1,178 districtwide, 494 on the east side.", src: "S7" },
+        { type: "con", head: "More busing", text: "210 walkers become bus riders, and east-side routes go from 32 to 38.", src: "S2" },
+        { type: "con", head: "Crowded receiving schools", text: "Overfills receiving schools. East Ridge would have about 478 students for 408 permanent seats (117%), and Hollywood Hill about 479 for 408.", src: "S12, S4" },
+        { type: "con", head: "Loses three buildings", text: "Closes three buildings and 1,688 seats, including the only school in these scenarios confirmed on public sewer and inside the growth area (Sunrise).", src: "S3, S6" },
+        { type: "pro", head: "Avoids the most repairs", text: "Avoids the most repair costs: about $23.8M scheduled for 2028–29.", src: "S5" },
+        { type: "unknown", head: "Hidden sewage costs", text: "Extra sewage hauling at East Ridge and Wellington, which truck their sewage out, isn't counted.", src: "S6" }
       ],
       rationale: "Zero east side schools at or below 400 students." },
     { id: 2, closes: ["Sunrise", "Moorlands"], keepsSunrise: false,
@@ -84,13 +84,13 @@ window.SUNRISE_DATA = {
       residentsMoved: 625, eastSideChanging: 217, districtwideChanging: 901, walkersToBus: 158,
       routesNow: 16, routesAfter: 16, over45Now: 0, over45After: 1, longestNow: 44, longestAfter: 51,
       considerations: [
-        { type: "con", text: "Saves the least: $2.22M a year (Case A), $2.17M (Case B). The district says it “only partially solves the problem.”", src: "S1, S7" },
-        { type: "con", text: "158 walkers become bus riders, which costs about $254,000 a year at the district's average cost per rider. The longest ride grows from 44 to 51 minutes.", src: "S2, S8" },
-        { type: "con", text: "Overfills Cottage Lake. It would receive 159 Sunrise students and reach about 437 students for 367 seats (119%), with no portables.", src: "S12, S4" },
-        { type: "con", text: "Sends Sunrise students to a building that trucks its sewage out and sits outside the growth area.", src: "S6" },
-        { type: "con", text: "Closes Sunrise just as its enrollment is projected to rebound, to 206 students by 2030.", src: "S3" },
-        { type: "pro", text: "Moves the fewest students of the three: about 901 districtwide.", src: "S7" },
-        { type: "unknown", text: "The added sewage hauling cost at Cottage Lake isn't published.", src: "S6" }
+        { type: "con", head: "Smallest savings", text: "Saves the least: $2.22M a year (Case A), $2.17M (Case B). The district says it “only partially solves the problem.”", src: "S1, S7" },
+        { type: "con", head: "More busing, longer rides", text: "158 walkers become bus riders, which costs about $254,000 a year at the district's average cost per rider. The longest ride grows from 44 to 51 minutes.", src: "S2, S8" },
+        { type: "con", head: "Crowds Cottage Lake", text: "Overfills Cottage Lake. It would receive 159 Sunrise students and reach about 437 students for 367 seats (119%), with no portables.", src: "S12, S4" },
+        { type: "con", head: "Moves kids off public sewer", text: "Sends Sunrise students to a building that trucks its sewage out and sits outside the growth area.", src: "S6" },
+        { type: "con", head: "Closes Sunrise as it rebounds", text: "Closes Sunrise just as its enrollment is projected to rebound, to 206 students by 2030.", src: "S3" },
+        { type: "pro", head: "Fewest students moved", text: "Moves the fewest students of the three: about 901 districtwide.", src: "S7" },
+        { type: "unknown", head: "Unpublished sewage costs", text: "The added sewage hauling cost at Cottage Lake isn't published.", src: "S6" }
       ],
       rationale: "Sunrise is “currently the lowest enrolled school”; Scenario 2 “only partially solves the problem.”" },
     { id: 3, closes: ["Hollywood Hill", "Moorlands"], keepsSunrise: true,
@@ -99,14 +99,15 @@ window.SUNRISE_DATA = {
       residentsMoved: 697, eastSideChanging: 261, districtwideChanging: 945, walkersToBus: 14,
       routesNow: 26, routesAfter: 28, over45Now: 0, over45After: 2, longestNow: 44, longestAfter: 49,
       considerations: [
-        { type: "pro", text: "Keeps Sunrise open.", src: "" },
-        { type: "pro", text: "Saves more than Scenario 2 in both cases: $2.34M a year (Case A), $2.18M (Case B).", src: "S1" },
-        { type: "pro", text: "Only 14 walkers become bus riders. The longest ride grows from 44 to 49 minutes.", src: "S2" },
-        { type: "pro", text: "Avoids about $17.4M in repairs scheduled for 2028–29. That includes Hollywood Hill's, the highest per square foot of these schools ($326).", src: "S5" },
-        { type: "pro", text: "Fills seats at Sunrise: about 83 Hollywood Hill students would move to Sunrise.", src: "S12" },
-        { type: "con", text: "Closes Hollywood Hill, which is outside the growth area. A school closed there would be hard to replace, and its families face the same loss.", src: "S6" },
-        { type: "con", text: "Moves 44 more students than Scenario 2 (945 vs. 901), adds two east-side bus routes, and puts two routes over 45 minutes.", src: "S2, S7" },
-        { type: "con", text: "The district's objection: Sunrise “would still be the lowest enrolled school in the district.”", src: "S7" }
+        { type: "pro", head: "Keeps schools and classes smaller", text: "No receiving school is pushed far past its permanent seats: Sunrise about 272 of 388 (70%), Wellington about 446 of 449 (99%), Cottage Lake about 374 of 367 (102%). Scenarios 1 and 2 push receiving schools to 117–119%.", src: "S3, S4, S12" },
+        { type: "pro", head: "Room for planned growth", text: "Keeps Sunrise, the only school in these scenarios on public sewer and inside the growth area, where new housing is planned. It would still have about 116 open permanent seats, and its enrollment is projected to rebound to 206 by 2030.", src: "S3, S4, S6" },
+        { type: "pro", head: "Solid savings", text: "Saves more than Scenario 2 in both cases: $2.34M a year (Case A), $2.18M (Case B).", src: "S1" },
+        { type: "pro", head: "Minimal busing impact", text: "Only 14 walkers become bus riders. The longest ride grows from 44 to 49 minutes.", src: "S2" },
+        { type: "pro", head: "Avoids costly repairs", text: "Avoids about $17.4M in repairs scheduled for 2028–29. That includes Hollywood Hill's, the highest per square foot of these schools ($326).", src: "S5" },
+        { type: "pro", head: "Fills Sunrise seats", text: "Fills seats at Sunrise: about 83 Hollywood Hill students would move to Sunrise.", src: "S12" },
+        { type: "con", head: "Hollywood Hill closes", text: "Closes Hollywood Hill, which is outside the growth area. A school closed there would be hard to replace, and its families face the same loss.", src: "S6" },
+        { type: "con", head: "More moves and routes", text: "Moves 44 more students than Scenario 2 (945 vs. 901), adds two east-side bus routes, and puts two routes over 45 minutes.", src: "S2, S7" },
+        { type: "con", head: "District's objection", text: "The district's objection: Sunrise “would still be the lowest enrolled school in the district.”", src: "S7" }
       ],
       rationale: "Sunrise “would still be the lowest enrolled school in the district.”" }
   ],
@@ -172,6 +173,31 @@ window.SUNRISE_DATA = {
       "5": [47, 43, 32, 48, 42, 53, 36, 49, 51, 41, 34, 33, 23, 34, 34, 35, 35, 35]
     },
     totals: [262, 257, 267, 274, 270, 265, 247, 227, 208, 194, 190, 190, 192, 205, 206, 208, 208, 210]
+  },
+
+  // Approximate neighboring schools, used only to suggest default receiving schools in the
+  // closure explorer. Based on school locations, NOT district attendance boundaries. Edit freely.
+  neighbors: {
+    "Arrowhead": ["Moorlands", "Kenmore Elem"],
+    "Canyon Creek": ["Crystal Springs", "Lockwood", "Fernwood"],
+    "Cottage Lake": ["Wellington", "East Ridge", "Hollywood Hill", "Sunrise"],
+    "Crystal Springs": ["Shelton View", "Canyon Creek", "Fernwood"],
+    "East Ridge": ["Cottage Lake", "Wellington", "Ruby Bridges"],
+    "Fernwood": ["Frank Love", "Lockwood", "Canyon Creek", "Kokanee"],
+    "Frank Love": ["Maywood Hills", "Fernwood", "Shelton View"],
+    "Hollywood Hill": ["Sunrise", "Cottage Lake", "Wellington", "Woodin"],
+    "Kenmore Elem": ["Moorlands", "Arrowhead", "Westhill"],
+    "Kokanee": ["Fernwood", "Ruby Bridges", "Lockwood"],
+    "Lockwood": ["Fernwood", "Canyon Creek", "Crystal Springs"],
+    "Maywood Hills": ["Woodin", "Woodmoor", "Frank Love", "Shelton View"],
+    "Moorlands": ["Arrowhead", "Kenmore Elem", "Westhill", "Woodmoor"],
+    "Ruby Bridges": ["Kokanee", "Wellington", "East Ridge", "Woodin"],
+    "Shelton View": ["Westhill", "Crystal Springs", "Frank Love", "Maywood Hills"],
+    "Sunrise": ["Cottage Lake", "Hollywood Hill", "East Ridge"],
+    "Wellington": ["Cottage Lake", "East Ridge", "Hollywood Hill", "Woodin"],
+    "Westhill": ["Kenmore Elem", "Moorlands", "Shelton View", "Woodmoor"],
+    "Woodin": ["Woodmoor", "Maywood Hills", "Wellington", "Hollywood Hill"],
+    "Woodmoor": ["Moorlands", "Woodin", "Maywood Hills", "Westhill"]
   },
 
   // Pockets (planning areas) the district moves in its scenarios. Source S7, S12.

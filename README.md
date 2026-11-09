@@ -8,8 +8,8 @@ Plain HTML, CSS and JavaScript. No build step and no dependencies.
 
 | Page | What it does |
 |---|---|
-| `index.html` | Home: the five options at a glance, key dates, and the district scenarios |
-| `options.html` | Evidence, trade-offs and sources for each option |
+| `index.html` | Home: the district scenarios, the five alternatives with their evidence and sources, and the timeline |
+| `options.html` | Closure explorer: close any school, choose receiving schools, and see how full they get, rough savings and considerations. The URL saves the current setup. |
 | `enrollment.html` | Class-by-class chart (is the dip temporary?), a fill-Sunrise tool, and seat use across the district |
 | `compare.html` | Full-cost comparison of the scenarios, plus a weighted scorecard. "Copy link" saves the current settings in the URL. |
 | `data.html` | Every table and source |
@@ -33,7 +33,8 @@ Import `justise/save-sunrise` in Netlify. `netlify.toml` already sets the publis
 |---|---|
 | Any number, scenario, pocket, staffing tier, timeline date or source | `data/sunrise-data.js`. Charts, tools and tables update automatically. |
 | Board vote date, partner link, contact email, "last updated" | `SITE_CONFIG` at the top of `data/sunrise-data.js` |
-| Option cards (short) and option evidence (full) | `index.html` and `options.html` |
+| Alternatives and their evidence | `index.html` |
+| Explorer presets and suggested neighbors | `PRESETS` in `assets/options.js`; `neighbors` in `data/sunrise-data.js` |
 | Default weights and inputs for the scorecard | `DEFAULTS` at the top of `assets/compare.js` |
 
 ## Before you share it widely

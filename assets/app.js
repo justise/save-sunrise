@@ -48,7 +48,7 @@
         </header>
         <div class="kicker">Considerations</div>
         <ul class="consider">
-          ${(s.considerations || []).map(c => `<li class="c-${c.type}"><span class="mark" aria-label="${MARK[c.type][1]}" title="${MARK[c.type][1]}">${MARK[c.type][0]}</span><span>${esc(c.text)}${c.src ? `<a class="src" href="data.html#sources">${esc(c.src)}</a>` : ""}</span></li>`).join("")}
+          ${(s.considerations || []).map(c => `<li class="c-${c.type}"><span class="mark" aria-label="${MARK[c.type][1]}" title="${MARK[c.type][1]}">${MARK[c.type][0]}</span><span>${c.head ? `<strong class="c-head">${esc(c.head)}</strong>` : ""}${esc(c.text)}${c.src ? `<a class="src" href="data.html#sources">${esc(c.src)}</a>` : ""}</span></li>`).join("")}
         </ul>
       </article>`;
   }

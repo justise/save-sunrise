@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Options · Keep Sunrise Open</title>
-  <meta name="description" content="Evidence, trade-offs and sources for each alternative to closing Sunrise Elementary.">
+  <title>Explore Closures · Keep Sunrise Open</title>
+  <meta name="description" content="Close any Northshore elementary school and see where its students would go, how full the receiving schools get, and what it would save.">
   <meta name="theme-color" content="#24477f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
       <a class="brand" href="index.html"><img src="assets/favicon.svg" width="34" height="34" alt=""><span class="brand-text"><strong>Keep Sunrise Open</strong><small>Alternatives to closure</small></span></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <ul id="nav-links" class="nav-menu">
-        <li><a href="options.html" aria-current="page">Options</a></li>
+        <li><a href="options.html" aria-current="page">Explore closures</a></li>
         <li><a href="enrollment.html">Enrollment tool</a></li>
         <li><a href="compare.html">Compare</a></li>
         <li><a href="data.html">Data</a></li>
@@ -29,99 +29,75 @@
 
   <section class="hero hero-sm">
     <div class="wrap">
-      <div class="eyebrow eyebrow-light"><span class="dot"></span>The options</div>
-      <h1>The evidence behind each option</h1>
-      <p class="lead">What we're asking for, why, and the trade-offs. Every figure links to its source.</p>
-      <div class="toc toc-light"><a href="#rebound">01 Rebound</a><a href="#scenario-3">02 Scenario 3</a><a href="#full-cost">03 Full cost</a><a href="#fill">04 Fill Sunrise</a><a href="#portables">05 Portables</a></div>
+      <div class="eyebrow eyebrow-light"><span class="dot"></span>Explore closures</div>
+      <h1>Close a school, see what happens</h1>
+      <p class="lead">Pick any school to close, choose where its students go, and see how full the receiving schools get, what it saves, and what else to weigh.</p>
     </div>
   </section>
 
   <main class="section">
-    <div class="wrap narrow">
-      <div class="legend" style="margin-bottom:24px">
-        <span class="key"><span class="tag tag-strong">Strong</span> backed by district figures</span>
-        <span class="key"><span class="tag tag-moderate">Moderate</span> needs district analysis</span>
-        <span class="key"><span class="tag tag-needs">Needs data</span> we're asking for it</span>
+    <div class="wrap">
+      <div class="calc explorer">
+        <aside class="card x-controls">
+          <div class="field">
+            <label>Start from</label>
+            <div class="preset-row" id="presets"></div>
+          </div>
+          <div class="field">
+            <label>Schools to close <output id="closed-count"></output></label>
+            <div class="chip-grid" id="close-chips" role="group" aria-label="Schools to close"></div>
+          </div>
+          <div class="field">
+            <label>Enrollment year</label>
+            <div class="seg" role="group" aria-label="Enrollment year" id="year-seg"></div>
+            <p class="hint">Resident students in each attendance area. 2028 is the district's Case A year.</p>
+          </div>
+          <div class="field">
+            <label>Count capacity as</label>
+            <div class="seg" role="group" aria-label="Capacity measure" id="measure-seg">
+              <button type="button" data-v="perm" aria-pressed="true">Permanent seats</button>
+              <button type="button" data-v="design" aria-pressed="false">Design capacity</button>
+            </div>
+            <p class="hint" id="measure-hint"></p>
+          </div>
+          <div class="field">
+            <label for="thr">Flag schools above <output id="thr-out"></output></label>
+            <input type="range" id="thr" min="70" max="100" step="1" value="90">
+          </div>
+          <button type="button" class="chip" id="copy-link">Copy link to this scenario</button>
+        </aside>
+
+        <div class="x-results">
+          <div class="tiles" id="x-tiles"></div>
+          <div id="x-moves"></div>
+          <div class="card" style="margin-top:20px">
+            <h3>How full each affected school would be</h3>
+            <div class="tbl-wrap" id="x-table"></div>
+            <div class="legend" style="margin-top:12px">
+              <span class="key"><span class="pill pill-ok">OK</span> under the line you set</span>
+              <span class="key"><span class="pill pill-warn">Near full</span> at or above it</span>
+              <span class="key"><span class="pill pill-bad">Over capacity</span> above 100%</span>
+              <span class="key"><span class="calc-tag">est</span> estimated, see notes</span>
+            </div>
+          </div>
+          <div class="card" style="margin-top:20px">
+            <div class="kicker">Considerations</div>
+            <ul class="consider" id="x-consider"></ul>
+          </div>
+          <details class="table-view" style="margin-top:20px">
+            <summary>How this tool works</summary>
+            <ul class="small">
+              <li><strong>Students</strong> are resident students from the district's projections: children who live in each attendance area.<a class="src" href="data.html#sources">S3</a> Choice transfers and out-of-district students aren't included.</li>
+              <li><strong>Permanent seats</strong> come from the Capital Facilities Plan for Sunrise, Hollywood Hill, Cottage Lake, Moorlands, East Ridge and Wellington.<a class="src" href="data.html#sources">S4</a> For other schools we estimate them from classroom counts (rooms × 20.4), which overstates seats where a school has portables. <strong>Design capacity</strong> is the district's rooms × 22.5, including portables, and is available for every school.<a class="src" href="data.html#sources">S3</a></li>
+              <li><strong>Where students go:</strong> by default, students are split across the receiving schools so they end up as evenly full as possible. That's a best case: real boundaries move whole neighborhoods. You can type your own numbers. Suggested receiving schools are nearby schools, not district boundaries.</li>
+              <li><strong>Savings</strong> are a rough estimate: the closed school's fixed costs (the district's figures where published, otherwise their average)<a class="src" href="data.html#sources">S1</a> minus added office and support staff at receiving schools from the district's staffing tiers.<a class="src" href="data.html#sources">S12</a> They leave out busing, one-time and building-upkeep costs, and won't match the district's own estimates exactly.</li>
+              <li><strong>Repairs avoided</strong> are corrective work scheduled for 2028–29, published for six schools.<a class="src" href="data.html#sources">S5</a></li>
+            </ul>
+          </details>
+        </div>
       </div>
-
-      <article class="sugg" id="rebound">
-        <div class="opt-top"><span class="opt-n">01</span><span class="tag tag-strong">Strong</span></div>
-        <h2>Wait for the rebound</h2>
-        <p class="ask"><strong>Our ask:</strong> Before closing Sunrise, set a public enrollment threshold and check it again in fall 2028, after the small class has moved up.</p>
-        <ul class="evidence">
-          <li>Sunrise's kindergarten classes run 30–33 students. The 2024 class had 18. That class is now moving through the grades and leaves after 2029.<a class="src" href="data.html#sources">S11</a></li>
-          <li>The district projects Sunrise's resident students bottoming out at 189 in 2028 and rising to 206 by 2030 and 210 by 2034.<a class="src" href="data.html#sources">S3, S11</a></li>
-          <li>Before any Moorlands students are moved, the district projects Arrowhead (204) below Sunrise (206) in 2030.<a class="src" href="data.html#sources">S3</a></li>
-        </ul>
-        <p class="tradeoff"><strong>Trade-off:</strong> Waiting means the district doesn't collect closure savings in the meantime. Scenario 2 would save about $2.2M a year.</p>
-        <a class="link-arrow" href="enrollment.html#cohort">See the class-by-class chart →</a>
-      </article>
-
-      <article class="sugg" id="scenario-3">
-        <div class="opt-top"><span class="opt-n">02</span><span class="tag tag-strong">Strong</span></div>
-        <h2>If consolidating, choose Scenario 3</h2>
-        <p class="ask"><strong>Our ask:</strong> Weigh the scenarios on full cost and disruption, not on which building has the fewest students today.</p>
-        <ul class="evidence">
-          <li>Scenario 3 keeps Sunrise and saves more than Scenario 2 in both of the district's cases: $2.34M vs. $2.22M (Case A) and $2.18M vs. $2.17M (Case B).<a class="src" href="data.html#sources">S1</a></li>
-          <li>14 walkers become bus riders, vs. 158 under Scenario 2. The longest ride is 49 minutes, vs. 51.<a class="src" href="data.html#sources">S2</a></li>
-          <li>It avoids $17.4M in repairs scheduled for 2028–29, after closures could take effect, vs. $13.0M for Scenario 2. <span class="calc-tag">calc</span><a class="src" href="data.html#sources">S5</a></li>
-        </ul>
-        <p class="tradeoff"><strong>Trade-offs:</strong> Scenario 3 changes schools for 44 more students districtwide (945 vs. 901) and adds two east-side bus routes. It also closes Hollywood Hill, whose families deserve the same care we're asking for.</p>
-        <a class="link-arrow" href="compare.html">Compare all options with your own weights →</a>
-      </article>
-
-      <article class="sugg" id="full-cost">
-        <div class="opt-top"><span class="opt-n">03</span><span class="tag tag-strong">Strong</span></div>
-        <h2>Count the full cost</h2>
-        <p class="ask"><strong>Our ask:</strong> For each scenario, publish one-time closure costs, the real added cost of busing, sewage hauling at receiving schools, upkeep of closed buildings, and expected enrollment loss.</p>
-        <ul class="evidence">
-          <li>The posted savings count fixed building costs and added office staff at receiving schools. They leave out one-time, transportation and building-upkeep costs.<a class="src" href="data.html#sources">S1, S12</a></li>
-          <li>At the district's average cost per rider, Scenario 2's 158 new bus riders cost about $254,000 a year. That's 11% of its savings. <span class="calc-tag">calc</span><a class="src" href="data.html#sources">S2, S8</a></li>
-          <li>Under Scenario 2, most Sunrise students would go to Cottage Lake, which trucks its sewage out. The hauling cost isn't published.<a class="src" href="data.html#sources">S6</a></li>
-        </ul>
-        <a class="link-arrow" href="compare.html#full-cost">Add the missing costs yourself →</a>
-      </article>
-
-      <article class="sugg" id="fill">
-        <div class="opt-top"><span class="opt-n">04</span><span class="tag tag-moderate">Moderate</span></div>
-        <h2>Fill Sunrise's empty seats</h2>
-        <p class="ask"><strong>Our ask:</strong> Add an option to the study that brings Sunrise above 300 students, through boundary changes or by placing a program there.</p>
-        <ul class="evidence">
-          <li>Sunrise has 245 students and 429 planned seats.<a class="src" href="data.html#sources">S1, S4</a></li>
-          <li>Fixed cost per student is about $5,100 today. At 330 students it would be about $3,800. <span class="calc-tag">calc</span><a class="src" href="data.html#sources">S1</a></li>
-          <li>In Scenario 3 the district already lists two Hollywood Hill pockets that border Sunrise (HH0 and HH2, 83 students).<a class="src" href="data.html#sources">S7</a></li>
-          <li>Of the six schools we checked, Sunrise is the only one confirmed on public sewer, and it's inside the growth area, so it's the easiest site to add students to.<a class="src" href="data.html#sources">S6</a></li>
-        </ul>
-        <p class="tradeoff"><strong>Trade-off:</strong> Students who move to Sunrise leave somewhere else. Moving the Hollywood Hill pockets alone would drop Hollywood Hill to about 274 students. A program or choice option avoids that.</p>
-        <a class="link-arrow" href="enrollment.html#fill">Try the fill tool →</a>
-      </article>
-
-      <article class="sugg" id="portables">
-        <div class="opt-top"><span class="opt-n">05</span><span class="tag tag-needs">Needs data</span></div>
-        <h2>Retire portables first</h2>
-        <p class="ask"><strong>Our ask:</strong> Have EDAC compare the cost of removing portable classrooms with closing a building, since both reduce extra seats.</p>
-        <ul class="evidence">
-          <li>The district has about 13,000 elementary design seats and about 9,300 students projected for 2030, including students from outside the district. <span class="calc-tag">calc</span><a class="src" href="data.html#sources">S3</a></li>
-          <li>There are 61 portable classrooms across ten elementary schools, about 1,370 seats. That's close to the 1,688 seats Scenario 1 removes by closing three schools. <span class="calc-tag">calc</span><a class="src" href="data.html#sources">S3</a></li>
-        </ul>
-        <p class="tradeoff"><strong>What's missing:</strong> The annual cost of keeping a portable. We're asking the district for it.</p>
-        <a class="link-arrow" href="enrollment.html#district">See seats across the district →</a>
-      </article>
     </div>
   </main>
-
-  <section class="section section-tint">
-    <div class="wrap">
-      <div class="center-head">
-        <div class="kicker">What we're responding to</div>
-        <h2>The district's three scenarios</h2>
-      </div>
-      <div class="scn-grid" id="scenario-cards"></div>
-      <p class="small" style="margin-top:14px">Net annual savings are the district's general-fund estimates in 2026–27 dollars. Case A uses projected 2028 residents; Case B uses October 2026 enrollment.<a class="src" href="data.html#sources">S1</a> Bus figures come from the district's transportation reports.<a class="src" href="data.html#sources">S2</a></p>
-      <h3 class="sub-h">What happens next</h3>
-      <ol class="timeline" id="timeline"></ol>
-    </div>
-  </section>
 
   <footer class="site-footer">
     <div class="wrap footer-wrap">
@@ -133,5 +109,6 @@
   <script src="data/sunrise-data.js"></script>
   <script src="assets/charts.js"></script>
   <script src="assets/app.js"></script>
+  <script src="assets/options.js"></script>
 </body>
 </html>
