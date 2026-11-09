@@ -61,6 +61,19 @@
             <p class="hint" id="measure-hint"></p>
           </div>
           <div class="field">
+            <label>Spread students to even out</label>
+            <div class="seg" role="group" aria-label="Spread students to even out" id="balance-seg">
+              <button type="button" data-v="pct" aria-pressed="true">How full</button>
+              <button type="button" data-v="size" aria-pressed="false">School size</button>
+            </div>
+            <p class="hint" id="balance-hint"></p>
+          </div>
+          <div class="field">
+            <label for="target">Target school size</label>
+            <input type="number" id="target" min="50" max="1200" step="10" value="400">
+            <p class="hint">Schools more than 15% away from this are flagged in the table.</p>
+          </div>
+          <div class="field">
             <label for="thr">Flag schools above <output id="thr-out"></output></label>
             <input type="range" id="thr" min="70" max="100" step="1" value="90">
           </div>
@@ -73,6 +86,23 @@
           <div class="card" style="margin-top:20px">
             <h3>How full each affected school would be</h3>
             <div class="tbl-wrap" id="x-table"></div>
+            <div class="x-move-actions">
+              <select id="watch-add" aria-label="Show another school in the table"></select>
+            </div>
+            <div class="new-school" id="new-school" hidden>
+              <div class="kicker">Add a new school</div>
+              <div class="ns-grid">
+                <label>Name <input type="text" id="ns-name" maxlength="40" placeholder="e.g. New East Elementary"></label>
+                <label>Permanent seats <input type="number" id="ns-seats" min="1" step="1" value="408"></label>
+                <label>Students to start <input type="number" id="ns-n" min="0" step="1" value="0"></label>
+              </div>
+              <p class="x-warn" id="ns-err" aria-live="polite"></p>
+              <div class="x-move-actions">
+                <button type="button" class="btn btn-primary btn-sm" id="ns-add">Add school</button>
+                <button type="button" class="chip" id="ns-cancel">Cancel</button>
+              </div>
+              <p class="hint">Fill it by closing a school and sending students to it, or with a move between schools.</p>
+            </div>
             <div class="legend" style="margin-top:12px">
               <span class="key"><span class="pill pill-ok">OK</span> under the line you set</span>
               <span class="key"><span class="pill pill-warn">Near full</span> at or above it</span>
@@ -90,7 +120,10 @@
               <li><strong>Students</strong> are resident students from the district's projections: children who live in each attendance area.<a class="src" href="data.html#sources">S3</a> Choice transfers and out-of-district students aren't included.</li>
               <li><strong>Permanent seats</strong> are the district's own planning capacity for every school, from the Capital Facilities Plan, Table 4.2.<a class="src" href="data.html#sources">S4</a> The plan counts regular classrooms in permanent buildings at an average class size of 24, then holds back 15% of space for special education, support programs and teacher planning, which works out to about 20.4 students per room. Portables aren't counted.</li>
               <li><strong>Design capacity</strong> counts every classroom, including portables, at 22.5 students each, with nothing held back.<a class="src" href="data.html#sources">S3</a> It's the measure the district's advisory committee (EDAC) uses, and it makes schools look emptier: Cottage Lake under Scenario 2 is 119% of permanent seats but 92% of design capacity.</li>
-              <li><strong>Where students go:</strong> by default, students are split across the receiving schools so they end up as evenly full as possible. That's a best case: real boundaries move whole neighborhoods. You can type your own numbers. Suggested receiving schools are nearby schools, not district boundaries.</li>
+              <li><strong>Where students go:</strong> by default, students are split across the receiving schools so they end up as evenly full as possible, or as close to the same size if you choose "School size." That's a best case: real boundaries move whole neighborhoods. Drag the sliders to set your own split. Suggested receiving schools are nearby schools, not district boundaries.</li>
+              <li><strong>Moves between schools</strong> stand in for boundary changes, programs or choice transfers. They're applied before any closure.</li>
+              <li><strong>Moorlands in the district scenarios:</strong> the district hasn't published where Moorlands students would go in the data we have, so those students are left out rather than guessed at. Use "Place them myself" to try a split.</li>
+              <li><strong>New schools</strong> use the seats you enter. Their running cost is the average fixed cost of the four schools the district priced; land and construction aren't counted.</li>
               <li><strong>Savings</strong> are a rough estimate: the closed school's fixed costs (the district's figures where published, otherwise their average)<a class="src" href="data.html#sources">S1</a> minus added office and support staff at receiving schools from the district's staffing tiers.<a class="src" href="data.html#sources">S12</a> They leave out busing, one-time and building-upkeep costs, and won't match the district's own estimates exactly.</li>
               <li><strong>Repairs avoided</strong> are corrective work scheduled for 2028–29, published for six schools.<a class="src" href="data.html#sources">S5</a></li>
             </ul>
