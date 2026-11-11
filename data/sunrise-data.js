@@ -11,7 +11,7 @@ window.SITE_CONFIG = {
   partnerUrl: "https://sunrisesoars.org/",
   // Contact email for the parent group. Leave "" to hide.
   contactEmail: "",
-  lastUpdated: "November 8, 2026"
+  lastUpdated: "November 10, 2026"
 };
 
 window.SUNRISE_DATA = {
@@ -122,10 +122,11 @@ window.SUNRISE_DATA = {
   timeline: [
     { date: "Oct 26, 2026", title: "District presents three scenarios", body: "Two of the three scenarios close Sunrise.", done: true },
     { date: "Nov 2, 2026", title: "Net savings estimates posted", body: "The posted figures don't include one-time closure costs or the cost of maintaining an empty building.", done: true },
-    { date: "Nov 23, 2026", title: "Policy analysis presented to the board", body: "" },
+    { date: "Nov 23, 2026", title: "Written data analysis presented to the board", body: "Public hearings (at least one per school) follow within 90 days of this report." },
     { date: "Dec 1–3, 2026", title: "Districtwide community sessions", body: "Show up, and bring a neighbor." },
     { date: "Dec 8, 2026 – Mar 8, 2027", title: "School-specific public hearings", body: "Sunrise hearing date to be announced." },
-    { date: "Jan – Feb 2027", title: "Committee refines recommendations", body: "" },
+    { date: "Jan 2027", title: "Board gives EDAC direction on revisions", body: "" },
+    { date: "Feb 22, 2027", title: "EDAC final recommendation to the board", body: "First reading at the school board meeting." },
     { date: "Mar 8, 2027", title: "Board vote", body: "", key: true },
     { date: "Fall 2028", title: "Earliest any change takes effect", body: "" }
   ],
@@ -210,6 +211,29 @@ window.SUNRISE_DATA = {
     "Westhill": ["Kenmore Elem", "Moorlands", "Shelton View", "Woodmoor"],
     "Woodin": ["Woodmoor", "Maywood Hills", "Wellington", "Hollywood Hill"],
     "Woodmoor": ["Moorlands", "Woodin", "Maywood Hills", "Westhill"]
+  },
+
+  // Neighborhoods (district planning-area "pockets") with published student counts, used by the closure
+  // explorer to move whole neighborhoods. Counts are 2028 projected residents (they sum to each school's 2028
+  // total). "to" is where the district sends the pocket in its scenarios. Sources S7, S12.
+  // Only these three schools have published pockets; Cottage Lake's covers just CL1.
+  neighborhoodsYear: 2028,
+  neighborhoods: {
+    "Hollywood Hill": [
+      { id: "HH0", n: 70, to: "Sunrise", note: "Borders Sunrise. Scenario 3 sends it to Sunrise." },
+      { id: "HH1", n: 47, to: "Cottage Lake", note: "Scenario 3 sends it to Cottage Lake." },
+      { id: "HH2", n: 13, to: "Sunrise", note: "Borders Sunrise. Scenario 3 sends it to Sunrise." },
+      { id: "HH3", n: 21, to: "Cottage Lake", note: "Scenario 3 sends it to Cottage Lake." },
+      { id: "HH4", n: 110, to: "Wellington", note: "Scenario 3 sends it to Wellington." }
+    ],
+    "Sunrise": [
+      { id: "SR0", n: 151, to: "Cottage Lake", note: "Scenario 2 sends it to Cottage Lake." },
+      { id: "SR1 + SR3", n: 30, to: "Hollywood Hill", note: "Published together. Scenarios 1 and 2 send them to Hollywood Hill." },
+      { id: "SR2", n: 8, to: "Cottage Lake", note: "Scenario 2 sends it to Cottage Lake." }
+    ],
+    "Cottage Lake": [
+      { id: "CL1", n: 28, to: "Hollywood Hill", note: "Scenario 2 moves it to Hollywood Hill." }
+    ]
   },
 
   // Pockets (planning areas) the district moves in its scenarios. Source S7, S12.

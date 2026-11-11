@@ -37,16 +37,25 @@
 
   <main class="section">
     <div class="wrap">
-      <div class="calc explorer">
-        <aside class="card x-controls">
-          <div class="field">
-            <label>Start from</label>
-            <div class="preset-row" id="presets"></div>
-          </div>
-          <div class="field">
-            <label>Schools to close <output id="closed-count"></output></label>
-            <div class="chip-grid" id="close-chips" role="group" aria-label="Schools to close"></div>
-          </div>
+      <div class="explorer">
+        <div class="card x-controls">
+          <div class="x-bar">
+            <div class="field">
+              <label>Start from</label>
+              <div class="preset-row" id="presets"></div>
+            </div>
+            <div class="x-bar-actions">
+              <span class="x-bar-label">Customize</span>
+              <details class="x-settings x-dd" id="x-close">
+                <summary class="chip">Schools to close <output id="closed-count"></output></summary>
+                <div class="x-settings-panel card">
+                  <div class="chip-grid" id="close-chips" role="group" aria-label="Schools to close"></div>
+                  <p class="hint">Students from a closed school go to nearby schools. Adjust them below.</p>
+                </div>
+              </details>
+              <details class="x-settings x-dd" id="x-settings">
+                <summary class="chip">Settings</summary>
+                <div class="x-settings-panel card">
           <div class="field">
             <label>Enrollment year</label>
             <div class="seg" role="group" aria-label="Enrollment year" id="year-seg"></div>
@@ -77,15 +86,31 @@
             <label for="thr">Flag schools above <output id="thr-out"></output></label>
             <input type="range" id="thr" min="70" max="100" step="1" value="90">
           </div>
-          <button type="button" class="chip" id="copy-link">Copy link to this scenario</button>
-        </aside>
+                </div>
+              </details>
+              <button type="button" class="chip" id="copy-link">Copy link to this scenario</button>
+            </div>
+          </div>
+        </div>
 
         <div class="x-results">
           <div class="tiles" id="x-tiles"></div>
           <div id="x-moves"></div>
           <div class="card" style="margin-top:20px">
-            <h3>How full each affected school would be</h3>
+            <div class="x-move-head">
+              <h3>How full each school would be</h3>
+              <div class="x-move-actions" style="margin:0">
+                <div class="seg" role="group" aria-label="Schools shown in the table" id="view-seg">
+                  <button type="button" data-v="all" aria-pressed="true">All schools</button>
+                  <button type="button" data-v="affected" aria-pressed="false">Affected</button>
+                  <button type="button" data-v="pick" aria-pressed="false">Pick schools</button>
+                </div>
+                <button type="button" class="chip" id="table-clear">Clear</button>
+              </div>
+            </div>
+            <div class="chip-grid table-pick" id="table-pick" role="group" aria-label="Schools to show" hidden></div>
             <div class="tbl-wrap" id="x-table"></div>
+            <div class="adj-bal" id="adj-bal"></div>
             <div class="x-move-actions">
               <select id="watch-add" aria-label="Show another school in the table"></select>
             </div>
@@ -101,12 +126,12 @@
                 <button type="button" class="btn btn-primary btn-sm" id="ns-add">Add school</button>
                 <button type="button" class="chip" id="ns-cancel">Cancel</button>
               </div>
-              <p class="hint">Fill it by closing a school and sending students to it, or with a move between schools.</p>
+              <p class="hint">Fill it by closing a school and sending students to it, or with + in the Adjust column.</p>
             </div>
             <div class="legend" style="margin-top:12px">
-              <span class="key"><span class="pill pill-ok">OK</span> under the line you set</span>
-              <span class="key"><span class="pill pill-warn">Near full</span> at or above it</span>
-              <span class="key"><span class="pill pill-bad">Over capacity</span> above 100%</span>
+              <span class="key"><span class="pill pill-ok">72%</span> OK, under the line you set</span>
+              <span class="key"><span class="pill pill-warn">94%</span> near full, at or above it</span>
+              <span class="key"><span class="pill pill-bad">112%</span> over capacity</span>
               <span class="key"><span class="calc-tag">est</span> estimated, see notes</span>
             </div>
           </div>
