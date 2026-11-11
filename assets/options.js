@@ -86,7 +86,7 @@
       recv: { "Hollywood Hill": ["Sunrise", "Cottage Lake", "Wellington"] }, mode: { "Hollywood Hill": "hood" } },
     { id: "none", label: "Clear", closed: [] }
   ];
-  let st = { year: 2028, measure: "perm", thr: 90, balance: "pct", target: 400, closed: [], recv: {}, weights: {}, manual: {},
+  let st = { year: 2028, measure: "design", thr: 90, balance: "pct", target: 400, closed: [], recv: {}, weights: {}, manual: {},
     mode: {}, hood: {}, adj: {}, unmodeled: [], watch: [], custom: [], view: "all", pick: [], preset: null };
 
   function applyPreset(p) {
@@ -456,7 +456,7 @@
       if (!Array.isArray(s.c)) return false;
       const arr = v => Array.isArray(v) ? v : [];
       arr(s.n).forEach(c => { if (c && c.name && !ROWS[c.name]) addCustom(String(c.name), Math.max(1, +c.cap || 1), Math.max(0, +c.n || 0)); });
-      st = { year: YEAR_COL[s.y] ? s.y : 2028, measure: s.m === "design" ? "design" : "perm", thr: +s.t || 90,
+      st = { year: YEAR_COL[s.y] ? s.y : 2028, measure: s.m === "perm" ? "perm" : "design", thr: +s.t || 90,
         balance: s.b === "size" ? "size" : "pct", target: +s.g || 400,
         closed: arr(s.c).filter(n => ROWS[n]), recv: s.r || {}, weights: s.w || {}, manual: s.x || {},
         adj: Object.fromEntries(Object.entries(s.a && typeof s.a === "object" ? s.a : {}).filter(([n, d]) => ROWS[n] && Number.isFinite(+d) && +d).map(([n, d]) => [n, Math.round(+d)])), unmodeled: arr(s.u), watch: arr(s.v).filter(n => ROWS[n]),
